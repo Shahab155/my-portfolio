@@ -52,4 +52,11 @@
     color: var(--color-text-primary);
     @apply antialiased;
   }
+
+  /* Hide default cursor on desktop for custom cursor experience */
+  @media (pointer: fine) {
+    * {
+      cursor: none !important;
+    }
+  }
 }

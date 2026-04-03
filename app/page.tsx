@@ -47,7 +47,28 @@ export default function Hero() {
 
             {/* Description */}
             <p className="max-w-lg text-lg md:text-xl text-[var(--color-text-secondary)] leading-relaxed">
-              I&apos;m a Full Stack Developer building modern, scalable web applications
+              I&apos;m a{' '}
+              <span className="relative inline-block">
+                <span className="relative z-10 text-[var(--color-text-primary)] font-semibold">
+                  Full Stack Developer
+                </span>
+                <motion.svg
+                  viewBox="0 0 200 12"
+                  className="absolute -bottom-1 left-0 w-full h-3 text-[var(--color-accent)] opacity-70"
+                  initial={{ pathLength: 0, opacity: 0 }}
+                  animate={{ pathLength: 1, opacity: 0.7 }}
+                  transition={{ duration: 1, delay: 1, ease: "easeOut" }}
+                >
+                  <motion.path
+                    d="M2 10 C 40 2, 160 2, 198 10"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                    strokeLinecap="round"
+                  />
+                </motion.svg>
+              </span>{' '}
+              building modern, scalable web applications
               with clean, maintainable code and exceptional user experiences.
             </p>
 
