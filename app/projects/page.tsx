@@ -81,28 +81,53 @@ export default function ProjectsPage() {
                   <h3 className="text-xl font-bold text-[var(--color-text-primary)] dark:text-white mb-3 tracking-wide">
                     {project.title}
                   </h3>
-                  <p className="text-[var(--color-text-secondary)] dark:text-zinc-400 text-sm leading-relaxed mb-8 flex-grow">
+                  <p className="text-[var(--color-text-secondary)] dark:text-zinc-400 text-sm leading-relaxed mb-6 flex-grow line-clamp-4">
                     {project.description}
                   </p>
 
+                  {/* Tech Stack Badges */}
+                  <div className="flex flex-wrap gap-1.5 mb-8">
+                    {project.tech?.map((item) => (
+                      <span 
+                        key={item} 
+                        className="text-[10px] px-2 py-1 rounded-md bg-zinc-50 dark:bg-zinc-900/50 text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-800 transition-colors hover:border-[var(--color-accent)]/50"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+
                   {/* Action Buttons */}
                   <div className="flex items-center justify-between gap-4 mt-auto">
-                    <a 
-                      href={project.repoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-full border border-[var(--color-accent)]/30 text-[var(--color-text-primary)] dark:text-[var(--color-accent)] hover:bg-[var(--color-accent)]/10 hover:border-[var(--color-accent)]/60 transition-all duration-300 text-sm font-medium"
-                    >
-                      Repository <FiGithub size={16} />
-                    </a>
-                    <a 
-                      href={project.demoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-full bg-[var(--color-accent)] hover:bg-cyan-400 text-black shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 transition-all duration-300 text-sm font-medium"
-                    >
-                      Demo <FiPlay size={16} fill="currentColor" />
-                    </a>
+                    {project.repoUrl ? (
+                      <>
+                        <Link
+                          href={project.repoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-full border border-[var(--color-accent)]/30 text-[var(--color-text-primary)] dark:text-[var(--color-accent)] hover:bg-[var(--color-accent)]/10 hover:border-[var(--color-accent)]/60 transition-all duration-300 text-sm font-medium"
+                        >
+                          Repository <FiGithub size={16} />
+                        </Link>
+                        <Link 
+                          href={project.demoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-full bg-[var(--color-accent)] hover:bg-cyan-400 text-black shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 transition-all duration-300 text-sm font-medium"
+                        >
+                          Demo <FiPlay size={16} fill="currentColor" />
+                        </Link>
+                      </>
+                    ) : (
+                      <Link 
+                        href={project.demoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-[var(--color-accent)] hover:bg-cyan-400 text-black shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 transition-all duration-300 text-sm font-medium"
+                      >
+                        Live Demo <FiPlay size={16} fill="currentColor" />
+                      </Link>
+                    )}
                   </div>
                 </div>
               </div>

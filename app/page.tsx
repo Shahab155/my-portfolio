@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import AboutSection from '@/components/AboutSection';
 import ContactSection from '@/components/ContactSection';
+import ExperienceSection from '@/components/ExperienceSection';
 import Footer from '@/components/Footer';
 import ProjectsSection from '@/components/ProjectsSection';
 import SkillsSection from '@/components/SkillsSection';
@@ -136,6 +137,7 @@ export default function Home() {
         </div>
       </section>
       <AboutSection />
+      <ExperienceSection />
       <SkillsSection />
       <ProjectsSection />
       <ContactSection />

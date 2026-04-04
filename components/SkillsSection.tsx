@@ -33,7 +33,7 @@ const CircularProgress = ({ percentage, color, iconItem }: { percentage: number,
 
   return (
     <motion.div 
-      className="relative flex items-center justify-center w-28 h-28 md:w-36 md:h-36 lg:w-40 lg:h-40 mx-auto mb-4 group"
+      className="relative flex items-center justify-center w-28 md:w-36 lg:w-40  mx-auto mb-4 group"
       whileHover={{ scale: 1.05 }}
       transition={{ duration: 0.3 }}
       style={{ '--skill-color': color } as React.CSSProperties}
