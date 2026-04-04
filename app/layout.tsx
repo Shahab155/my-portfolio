@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import CustomCursor from "@/components/CustomCursor";
+import FloatingActions from "@/components/FloatingActions";
+import Script from "next/script";
 import "./globals.css";
 
 const inter = Inter({
@@ -26,14 +28,15 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        <script
+        <Script
+          id="theme-initializer"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
                 try {
                   var theme = localStorage.getItem('theme');
-                  var supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
-                  if (!theme && supportDarkMode) theme = 'dark';
+                  if (!theme) theme = 'dark'; // Dark theme by default
                   if (theme === 'dark') {
                     document.documentElement.classList.add('dark');
                   } else {
@@ -48,6 +51,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col font-sans transition-colors duration-300 overflow-x-hidden">
         <CustomCursor />
         <Navbar />
+        <FloatingActions />
         {children}
       </body>
     </html>

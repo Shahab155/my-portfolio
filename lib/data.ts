@@ -1,0 +1,50 @@
+export const projects = [
+  {
+    id: 'ecommerce-platform',
+    title: 'A.A. Dewan',
+    description: 'A.A. Dewan & Co. is a leading corporate and intellectual property law firm in Pakistan, offering strategic legal services for families, businesses, and overseas Pakistanis.',
+    image: '',
+    repoUrl: '',
+    demoUrl: 'https://ecommerce-platform.demo.com',
+  },
+  {
+    id: '2',
+    title: 'A.A. Dewan',
+    description: 'Designed and developed a professional, clean, and responsive website for a leading law firm in Pakistan. The project includes a modern homepage, services pages, blog section, and contact system to help the firm attract local and overseas clients.',
+    image: '/projects/aadewan.png',
+    repoUrl: '',
+    demoUrl: 'https://aadewan.com.pk/',
+  },
+  {
+    id: 'corporate-website',
+    title: 'Global Agri Food',
+    description: 'Corporate website for an Algerian agri-food distributor, focused on trust-building through clear structure, strong visuals, and intuitive navigation.',
+    image: '',
+    repoUrl: 'https://github.com/shahab/global-agri-food',
+    demoUrl: 'https://global-agri-food.demo.com',
+  },
+  {
+    id: 'social-media-app',
+    title: 'ConnectSphere',
+    description: 'A real-time social networking application with instant messaging, live notifications, and a responsive grid layout for media sharing.',
+    image: '',
+    repoUrl: 'https://github.com/shahab/connect-sphere',
+    demoUrl: 'https://connect-sphere.demo.com',
+  },
+  {
+    id: 'ai-task-manager',
+    title: 'TaskerAI',
+    description: 'Smart task management tool that uses AI to automatically categorize, prioritize, and suggest deadlines for your daily goals.',
+    image: '',
+    repoUrl: 'https://github.com/shahab/tasker-ai',
+    demoUrl: 'https://tasker-ai.demo.com',
+  },
+  {
+    id: 'portfolio-v1',
+    title: 'Legacy Portfolio',
+    description: 'The first iteration of my developer portfolio building with React and styled-components, featuring a light-theme aesthetic.',
+    image: '',
+    repoUrl: 'https://github.com/shahab/legacy-portfolio',
+    demoUrl: 'https://shahab-legacy.com',
+  }
+];
