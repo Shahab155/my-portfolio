@@ -89,34 +89,57 @@ export default function Navbar() {
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: -10 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: -10 }}
-            className={`
-              fixed top-32 left-[10%] right-[10%] p-8 rounded-[32px]
-              bg-surface/95 backdrop-blur-2xl border border-[var(--color-accent)]/10 shadow-2xl
-              flex flex-col items-center gap-6 md:hidden z-40
-            `}
-          >
-            {NavLinks.map((link, idx) => (
-              <motion.div
-                key={link.name}
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: idx * 0.05 }}
-                className="w-full text-center"
-              >
-                <Link
-                  href={link.href}
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsOpen(false)}
+              className="fixed inset-0 bg-black/40 backdrop-blur-[2px] z-40 md:hidden"
+            />
+            
+            {/* Sidebar */}
+            <motion.div
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+              className={`
+                fixed top-0 right-0 bottom-0 w-[280px] p-10
+                bg-background/95 backdrop-blur-2xl border-l border-white/5 dark:border-zinc-800/50 shadow-2xl
+                flex flex-col items-start gap-8 md:hidden z-50
+              `}
+            >
+              {/* Close Button in Sidebar */}
+              <div className="w-full flex justify-end mb-4">
+                <button
                   onClick={() => setIsOpen(false)}
-                  className="text-lg font-medium hover:text-[var(--color-accent)] block py-2"
+                  className="p-2 text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors"
                 >
-                  {link.name}
-                </Link>
-              </motion.div>
-            ))}
-          </motion.div>
+                  <HiX size={28} />
+                </button>
+              </div>
+
+              {NavLinks.map((link, idx) => (
+                <motion.div
+                  key={link.name}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.1 + idx * 0.05 }}
+                  className="w-full"
+                >
+                  <Link
+                    href={link.href}
+                    onClick={() => setIsOpen(false)}
+                    className="text-xl font-semibold text-[var(--color-text-secondary)] hover:text-[var(--color-accent)] transition-colors block py-2"
+                  >
+                    {link.name}
+                  </Link>
+                </motion.div>
+              ))}
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </header>

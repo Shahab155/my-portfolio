@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
 
 import { 
   SiNextdotjs, SiReact, SiTailwindcss, SiJavascript, SiTypescript,
@@ -85,12 +86,43 @@ export default function SkillsSection() {
     visible: { opacity: 1, y: 0 },
   };
 
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [isInteracting, setIsInteracting] = useState(false);
+
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    let animationFrameId: number;
+    let lastTime = performance.now();
+    const speed = 0.05; // pixels per millisecond
+
+    const autoScroll = (currentTime: number) => {
+      const deltaTime = currentTime - lastTime;
+      lastTime = currentTime;
+
+      if (!isInteracting) {
+        container.scrollLeft += speed * deltaTime;
+
+        // If we have scrolled past halfway (since we doubled the items), reset to 0 for infinite loop
+        if (container.scrollLeft >= container.scrollWidth / 2) {
+          container.scrollLeft = 0;
+        }
+      }
+      animationFrameId = requestAnimationFrame(autoScroll);
+    };
+
+    animationFrameId = requestAnimationFrame(autoScroll);
+
+    return () => cancelAnimationFrame(animationFrameId);
+  }, [isInteracting]);
+
   return (
     <section id="skills" className="py-24 bg-[var(--color-bg)] w-full overflow-hidden relative transition-colors duration-300 border-b border-zinc-200 dark:border-zinc-800">
       {/* Subtle dot grid background */}
       <div className="absolute inset-0 bg-[radial-gradient(#334155_0.8px,transparent_1px)] dark:bg-[radial-gradient(#475569_0.8px,transparent_1px)] bg-[length:20px_20px] opacity-40 pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 relative z-10">
+      <div className="max-w-7xl mx-auto relative z-10">
         
         {/* Section Heading */}
         <motion.div
@@ -99,7 +131,7 @@ export default function SkillsSection() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-20"
+          className="text-center mb-20 px-4"
         >
           <div className="flex justify-center items-center gap-4 mb-6">
             <div className="w-8 h-[1px] bg-[var(--color-accent)] opacity-50"></div>
@@ -115,26 +147,20 @@ export default function SkillsSection() {
         </motion.div>
 
         {/* Skills Slider */}
-        <div className="relative w-full overflow-hidden mb-20 group">
-          <style>{`
-            @keyframes marquee {
-              0% { transform: translateX(-50%); }
-              100% { transform: translateX(0%); }
-            }
-            .animate-marquee {
-              animation: marquee 60s linear infinite;
-            }
-            .group:hover .animate-marquee {
-              animation-play-state: paused;
-            }
-          `}</style>
-
+        <div className="relative w-full mb-20 group py-4">
           {/* Gradient Masks for fading edges */}
-          <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-[var(--color-bg)] to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-[var(--color-bg)] to-transparent z-10 pointer-events-none" />
+          <div className="absolute left-0 top-0 bottom-0 w-12 md:w-24 bg-gradient-to-r from-[var(--color-bg)] to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-12 md:w-24 bg-gradient-to-l from-[var(--color-bg)] to-transparent z-10 pointer-events-none" />
 
-          {/* Moving Track */}
-          <div className="flex gap-4 md:gap-8 w-max animate-marquee">
+          {/* Scrollable Track */}
+          <div 
+            ref={scrollContainerRef}
+            onMouseEnter={() => setIsInteracting(true)}
+            onMouseLeave={() => setIsInteracting(false)}
+            onTouchStart={() => setIsInteracting(true)}
+            onTouchEnd={() => setIsInteracting(false)}
+            className="flex gap-4 md:gap-8 overflow-x-auto px-12 md:px-24 hide-scrollbar"
+          >
             {[...skills, ...skills].map((skill, index) => (
               <div
                 key={index}

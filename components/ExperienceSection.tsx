@@ -191,7 +191,8 @@ export default function ExperienceSection() {
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-cyan-500/5 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-cyan-500/5 blur-[120px] rounded-full pointer-events-none" />
 
-      <div className="max-w-3xl mx-auto px-6 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
+        <div className="max-w-3xl mx-auto">
         {/* Section Label & Heading */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -234,6 +235,7 @@ export default function ExperienceSection() {
               />
             ))}
           </div>
+        </div>
         </div>
       </div>
     </section>

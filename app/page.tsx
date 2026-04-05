@@ -31,7 +31,7 @@ export default function Home() {
         {/* Subtle dot grid background */}
         <div className="absolute inset-0 bg-[radial-gradient(#334155_0.8px,transparent_1px)] dark:bg-[radial-gradient(#475569_0.8px,transparent_1px)] bg-[length:20px_20px] opacity-40" />
 
-        <div className="max-w-7xl mx-auto px-6  pb-16 lg:pb-0 relative z-10">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-32 md:pt-20 pb-16 lg:pb-0 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* LEFT COLUMN - Text Content */}
             <motion.div
@@ -96,11 +96,11 @@ export default function Home() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: isVisible ? 1 : 0, scale: isVisible ? 1 : 0.9 }}
               transition={{ duration: 1, ease: "easeOut" }}
-              className="relative flex justify-center lg:justify-end"
+              className="relative flex justify-center lg:justify-end p-6 lg:p-10 rounded-[3rem] bg-cyan-500/[0.03] dark:bg-cyan-400/[0.02] border border-cyan-500/10 dark:border-cyan-400/5 backdrop-blur-md"
             >
-              <div className="relative w-full max-w-[420px] lg:max-w-[480px]">
+              <div className="relative w-full max-w-[300px] lg:max-w-[360px]">
                 {/* Glow / Background Effect */}
-                <div className="absolute -inset-8  rounded-[4rem] blur-3xl" />
+                <div className="absolute -inset-6 rounded-[3rem] blur-3xl opacity-50" />
 
                 <div className="relative aspect-[3/4] rounded-[2.5rem] overflow-hidden shadow-2xl flex items-center justify-center group transition-all duration-500 hover:border-cyan-500/30">
                  

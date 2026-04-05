@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { FiGithub, FiPlay } from 'react-icons/fi';
 import { projects } from '@/lib/data';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function ProjectsSection() {
   const fadeUpVariant = {
@@ -61,10 +62,12 @@ export default function ProjectsSection() {
 
                   {/* Project Image Placeholder */}
                   <div className="relative w-full aspect-video rounded-xl overflow-hidden mb-6 border border-zinc-200 dark:border-white/5 group-hover:border-[var(--color-accent)]/30 transition-colors duration-500">
-                    <img
+                    <Image
                       src={project.image}
                       alt={project.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className="object-cover group-hover:scale-105 transition-transform duration-700"
                     />
                   </div>
 
