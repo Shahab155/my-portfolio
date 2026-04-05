@@ -53,7 +53,7 @@ export default function Home() {
               </div>
 
               {/* Description */}
-              <p className="max-w-lg text-lg md:text-xl text-[var(--color-text-secondary)] leading-relaxed">
+              <p className="max-w-lg text-base font-light text-zinc-700 dark:text-zinc-400 leading-relaxed tracking-wide">
                 I am a{' '}
                 <span className="relative inline-block">
                   <span className="relative z-10 text-[var(--color-text-primary)] font-semibold">
@@ -97,20 +97,20 @@ export default function Home() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: isVisible ? 1 : 0, scale: isVisible ? 1 : 0.9 }}
               transition={{ duration: 1, ease: "easeOut" }}
-              className="relative flex justify-center lg:justify-end p-6 lg:p-8 rounded-[3rem]  dark:bg-cyan-400/[0.02] border border-cyan-500/10 dark:border-cyan-400/5 backdrop-blur-md"
+              className=""
             >
-              <div className="relative w-full max-w-[300px] lg:max-w-[300px] mx-auto">
+              <div className="relative w-full max-w-[310px] lg:max-w-[330px] mx-auto">
                 {/* Glow / Background Effect */}
                 <div className="absolute -inset-6 rounded-[3rem] blur-3xl opacity-50" />
 
-                <div className="relative aspect-[3/4] rounded-[2.5rem] overflow-hidden shadow-2xl flex items-center justify-center group transition-all duration-500 hover:border-cyan-500/30">
+                <div className="relative aspect-[3/4] rounded-[2.5rem] bg-white dark:bg-transparent overflow-hidden shadow-xl shadow-zinc-200/50 dark:shadow-xl flex items-center justify-center group transition-all duration-500 hover:border-cyan-500/30">
                  
                   
                   {/* Centered Content */}
                   <div className="relative z-10 flex flex-col items-center gap-6">
                     <div className="relative">
                       {/* Animated Geometric Patterns */}
-                      <div className="absolute w-[350%] h-[350%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-20 dark:opacity-40 flex items-center justify-center pointer-events-none">
+                      <div className="absolute w-[350%] h-[350%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-70 dark:opacity-40 flex items-center justify-center pointer-events-none">
                         <svg className="w-full h-full" viewBox="0 0 100 100">
                           <motion.circle 
                             cx="50" cy="50" r="38" 
@@ -138,7 +138,7 @@ export default function Home() {
                         initial={{ scale: 0.9, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         transition={{ duration: 1, delay: 0.5 }}
-                        className="relative z-10 w-28 h-28 rounded-[1.5rem] bg-gradient-to-tr from-cyan-500/10 to-purple-500/10 border border-white/10 flex items-center justify-center backdrop-blur-md shadow-inner"
+                        className="relative z-10 w-28 h-28 rounded-[1.5rem] bg-gradient-to-tr from-cyan-500/20 to-purple-500/20 dark:from-cyan-500/10 dark:to-purple-500/10 border border-cyan-500/20 dark:border-white/10 flex items-center justify-center backdrop-blur-md shadow-lg shadow-cyan-500/5 dark:shadow-inner"
                       >
                       <motion.span 
                         className="text-6xl drop-shadow-2xl"
@@ -158,7 +158,7 @@ export default function Home() {
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.8 }}
-                        className="font-playfair font-normal text-[var(--color-text-primary)] dark:text-zinc-300 tracking-[0.3em] uppercase text-xs"
+                        className="font-bold text-[var(--color-text-primary)] dark:text-zinc-300 tracking-[0.3em] uppercase text-xs"
                       >
                         Shahab
                       </motion.p>

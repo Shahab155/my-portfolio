@@ -37,7 +37,6 @@
   --color-text-secondary: var(--color-text-secondary);
 
   --font-sans: var(--font-inter);
-  --font-playfair: var(--font-playfair);
 }
 
 @layer base {

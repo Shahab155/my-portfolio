@@ -109,7 +109,7 @@ const ExperienceEntry = ({
               size={14}
               className="text-cyan-400 mt-1 flex-shrink-0 transition-transform duration-300 group-hover:translate-x-1"
             />
-            <p className="font-playfair text-sm font-normal text-zinc-600 dark:text-zinc-300 leading-snug">
+            <p className="text-base font-light text-zinc-700 dark:text-zinc-400 leading-relaxed tracking-wide">
               {bullet}
             </p>
           </motion.div>

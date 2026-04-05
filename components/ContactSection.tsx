@@ -129,7 +129,7 @@ export default function ContactSection() {
           <h2 className="text-4xl md:text-5xl font-bold text-[var(--color-text-primary)] dark:text-white mb-4">
             Let&apos;s Work Together
           </h2>
-          <p className="font-playfair text-base font-normal text-zinc-600 dark:text-zinc-300 leading-snug text-center max-w-xl mx-auto">
+          <p className="text-base font-light text-zinc-700 dark:text-zinc-400 leading-relaxed tracking-wide text-center max-w-xl mx-auto">
             Have a project in mind or want to hire me?<br className="hidden sm:block" />
             I&apos;d love to hear from you.
           </p>

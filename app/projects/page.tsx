@@ -84,7 +84,7 @@ export default function ProjectsPage() {
                   <h3 className="text-xl font-bold text-[var(--color-text-primary)] dark:text-white mb-3 tracking-wide">
                     {project.title}
                   </h3>
-                  <p className="font-playfair text-sm font-normal text-zinc-700 dark:text-zinc-400 leading-snug mb-6 flex-grow line-clamp-4">
+                  <p className="text-sm font-light text-zinc-700 dark:text-zinc-400 leading-relaxed tracking-wide mb-6 flex-grow line-clamp-4">
                     {project.description}
                   </p>
 

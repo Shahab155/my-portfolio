@@ -54,7 +54,7 @@ export default function AboutSection() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="font-playfair text-base font-normal text-zinc-600 dark:text-zinc-300 leading-snug"
+            className="text-base font-light text-zinc-700 dark:text-zinc-400 leading-relaxed tracking-wide"
           >
             I am Shahab Ud Din, a Full Stack Developer from Pakistan. I have been working on building web applications for more than one year now.
           </motion.p>
@@ -64,7 +64,7 @@ export default function AboutSection() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="font-playfair text-base font-normal text-zinc-600 dark:text-zinc-300 leading-snug"
+            className="text-base font-light text-zinc-700 dark:text-zinc-400 leading-relaxed tracking-wide"
           >
             Beyond web development, I am currently exploring
             Agentic AI building autonomous systems using
