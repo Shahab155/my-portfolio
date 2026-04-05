@@ -129,7 +129,7 @@ export default function ContactSection() {
           <h2 className="text-4xl md:text-5xl font-bold text-[var(--color-text-primary)] dark:text-white mb-4">
             Let&apos;s Work Together
           </h2>
-          <p className="text-[var(--color-text-secondary)] dark:text-zinc-400 text-center max-w-xl mx-auto text-base leading-relaxed">
+          <p className="font-playfair text-base font-normal text-zinc-600 dark:text-zinc-300 leading-snug text-center max-w-xl mx-auto">
             Have a project in mind or want to hire me?<br className="hidden sm:block" />
             I&apos;d love to hear from you.
           </p>
@@ -213,6 +213,7 @@ export default function ContactSection() {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   required
+                  suppressHydrationWarning
                   className={inputClass}
                 />
               </div>
@@ -229,6 +230,7 @@ export default function ContactSection() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
+                  suppressHydrationWarning
                   className={inputClass}
                 />
               </div>
@@ -245,6 +247,7 @@ export default function ContactSection() {
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   required
+                  suppressHydrationWarning
                   className={inputClass}
                 />
               </div>
@@ -253,6 +256,7 @@ export default function ContactSection() {
               <motion.button
                 id="contact-submit"
                 type="submit"
+                suppressHydrationWarning
                 disabled={isLoading || isSuccess}
                 whileHover={{ scale: isLoading || isSuccess ? 1 : 1.02 }}
                 whileTap={{ scale: isLoading || isSuccess ? 1 : 0.98 }}

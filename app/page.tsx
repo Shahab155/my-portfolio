@@ -81,6 +81,7 @@ export default function Home() {
 
               {/* CTA Button */}
               <motion.button
+                suppressHydrationWarning
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={scrollToContact}
@@ -96,50 +97,51 @@ export default function Home() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: isVisible ? 1 : 0, scale: isVisible ? 1 : 0.9 }}
               transition={{ duration: 1, ease: "easeOut" }}
-              className="relative flex justify-center lg:justify-end p-6 lg:p-10 rounded-[3rem] bg-cyan-500/[0.03] dark:bg-cyan-400/[0.02] border border-cyan-500/10 dark:border-cyan-400/5 backdrop-blur-md"
+              className="relative flex justify-center lg:justify-end p-6 lg:p-8 rounded-[3rem]  dark:bg-cyan-400/[0.02] border border-cyan-500/10 dark:border-cyan-400/5 backdrop-blur-md"
             >
-              <div className="relative w-full max-w-[300px] lg:max-w-[360px]">
+              <div className="relative w-full max-w-[300px] lg:max-w-[300px] mx-auto">
                 {/* Glow / Background Effect */}
                 <div className="absolute -inset-6 rounded-[3rem] blur-3xl opacity-50" />
 
                 <div className="relative aspect-[3/4] rounded-[2.5rem] overflow-hidden shadow-2xl flex items-center justify-center group transition-all duration-500 hover:border-cyan-500/30">
                  
                   
-                  {/* Animated Geometric Patterns */}
-                  <div className="absolute inset-0 opacity-20 dark:opacity-40">
-                    <svg className="w-full h-full" viewBox="0 0 100 100">
-                      <motion.circle 
-                        cx="50" cy="50" r="40" 
-                        fill="none" 
-                        stroke="currentColor" 
-                        strokeWidth="0.1" 
-                        className="text-cyan-500"
-                        animate={{ rotate: 360 }}
-                        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                      />
-                      <motion.circle 
-                        cx="50" cy="50" r="30" 
-                        fill="none" 
-                        stroke="currentColor" 
-                        strokeWidth="0.1" 
-                        strokeDasharray="4 4"
-                        className="text-purple-500"
-                        animate={{ rotate: -360 }}
-                        transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-                      />
-                    </svg>
-                  </div>
-
                   {/* Centered Content */}
                   <div className="relative z-10 flex flex-col items-center gap-6">
-                    <motion.div 
-                      initial={{ scale: 0.9, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      transition={{ duration: 1, delay: 0.5 }}
-                      className="w-32 h-32 rounded-3xl bg-gradient-to-tr from-cyan-500/10 to-purple-500/10 border border-white/10 flex items-center justify-center backdrop-blur-md shadow-inner"
-                    >
+                    <div className="relative">
+                      {/* Animated Geometric Patterns */}
+                      <div className="absolute w-[350%] h-[350%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-20 dark:opacity-40 flex items-center justify-center pointer-events-none">
+                        <svg className="w-full h-full" viewBox="0 0 100 100">
+                          <motion.circle 
+                            cx="50" cy="50" r="38" 
+                            fill="none" 
+                            stroke="currentColor" 
+                            strokeWidth="0.15" 
+                            className="text-cyan-500"
+                            animate={{ rotate: 360 }}
+                            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                          />
+                          <motion.circle 
+                            cx="50" cy="50" r="30" 
+                            fill="none" 
+                            stroke="currentColor" 
+                            strokeWidth="0.15" 
+                            strokeDasharray="4 4"
+                            className="text-purple-500"
+                            animate={{ rotate: -360 }}
+                            transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                          />
+                        </svg>
+                      </div>
+
+                      <motion.div 
+                        initial={{ scale: 0.9, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        transition={{ duration: 1, delay: 0.5 }}
+                        className="relative z-10 w-28 h-28 rounded-[1.5rem] bg-gradient-to-tr from-cyan-500/10 to-purple-500/10 border border-white/10 flex items-center justify-center backdrop-blur-md shadow-inner"
+                      >
                       <motion.span 
-                        className="text-5xl drop-shadow-2xl"
+                        className="text-6xl drop-shadow-2xl"
                         animate={{ 
                           y: [0, -8, 0],
                           rotate: [0, 5, -5, 0]
@@ -149,13 +151,14 @@ export default function Home() {
                          👨‍💻
                       </motion.span>
                     </motion.div>
+                  </div>
                     
                     <div className="text-center space-y-1">
                       <motion.p 
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.8 }}
-                        className="text-[var(--color-text-primary)] dark:text-zinc-300 font-bold tracking-[0.3em] uppercase text-xs"
+                        className="font-playfair font-normal text-[var(--color-text-primary)] dark:text-zinc-300 tracking-[0.3em] uppercase text-xs"
                       >
                         Shahab
                       </motion.p>
@@ -169,9 +172,9 @@ export default function Home() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 1.2 }}
-                        className="text-cyan-500/70 text-[10px] font-mono tracking-widest uppercase mt-2"
+                        className="text-cyan-400 text-xs tracking-widest uppercase mt-2 font-sans"
                       >
-                        Solutions Architect
+                        Full Stack Developer
                       </motion.p>
                     </div>
                   </div>
