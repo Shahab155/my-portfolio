@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Navbar from "@/components/Navbar";
-import CustomCursor from "@/components/CustomCursor";
-import FloatingActions from "@/components/FloatingActions";
 import Script from "next/script";
+import LayoutContent from "@/components/LayoutContent";
 import "./globals.css";
 
 const inter = Inter({
@@ -49,10 +47,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col font-sans transition-colors duration-300 overflow-x-hidden">
-        <CustomCursor />
-        <Navbar />
-        <FloatingActions />
-        {children}
+        <LayoutContent>{children}</LayoutContent>
       </body>
     </html>
   );

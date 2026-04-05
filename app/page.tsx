@@ -27,11 +27,11 @@ export default function Home() {
 
   return (
     <main>
-      <section className="relative min-h-screen bg-[var(--color-bg)] overflow-hidden flex items-center py-10">
+      <section className="relative min-h-screen bg-[var(--color-bg)] overflow-hidden flex items-center py-10 border-b border-zinc-200 dark:border-zinc-800">
         {/* Subtle dot grid background */}
         <div className="absolute inset-0 bg-[radial-gradient(#334155_0.8px,transparent_1px)] dark:bg-[radial-gradient(#475569_0.8px,transparent_1px)] bg-[length:20px_20px] opacity-40" />
 
-        <div className="max-w-7xl mx-auto px-6 pt-20 pb-16 lg:pb-0 relative z-10">
+        <div className="max-w-7xl mx-auto px-6  pb-16 lg:pb-0 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* LEFT COLUMN - Text Content */}
             <motion.div
@@ -54,7 +54,7 @@ export default function Home() {
 
               {/* Description */}
               <p className="max-w-lg text-lg md:text-xl text-[var(--color-text-secondary)] leading-relaxed">
-                I&apos;m a{' '}
+                I am a{' '}
                 <span className="relative inline-block">
                   <span className="relative z-10 text-[var(--color-text-primary)] font-semibold">
                     Full Stack Developer
@@ -100,17 +100,85 @@ export default function Home() {
             >
               <div className="relative w-full max-w-[420px] lg:max-w-[480px]">
                 {/* Glow / Background Effect */}
-                <div className="absolute -inset-8 bg-gradient-to-br from-cyan-500/10 via-transparent to-purple-500/10 rounded-[4rem] blur-3xl" />
+                <div className="absolute -inset-8  rounded-[4rem] blur-3xl" />
 
-                <div className="relative rounded-3xl overflow-hidden border border-zinc-800 shadow-2xl">
-                  <Image
-                    src="/hero.png"
-                    alt="Shahab Ud Din - Full Stack Developer"
-                    width={600}
-                    height={800}
-                    className="w-full h-auto object-cover"
-                    priority
-                  />
+                <div className="relative aspect-[3/4] rounded-[2.5rem] overflow-hidden shadow-2xl flex items-center justify-center group transition-all duration-500 hover:border-cyan-500/30">
+                 
+                  
+                  {/* Animated Geometric Patterns */}
+                  <div className="absolute inset-0 opacity-20 dark:opacity-40">
+                    <svg className="w-full h-full" viewBox="0 0 100 100">
+                      <motion.circle 
+                        cx="50" cy="50" r="40" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        strokeWidth="0.1" 
+                        className="text-cyan-500"
+                        animate={{ rotate: 360 }}
+                        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                      />
+                      <motion.circle 
+                        cx="50" cy="50" r="30" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        strokeWidth="0.1" 
+                        strokeDasharray="4 4"
+                        className="text-purple-500"
+                        animate={{ rotate: -360 }}
+                        transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                      />
+                    </svg>
+                  </div>
+
+                  {/* Centered Content */}
+                  <div className="relative z-10 flex flex-col items-center gap-6">
+                    <motion.div 
+                      initial={{ scale: 0.9, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      transition={{ duration: 1, delay: 0.5 }}
+                      className="w-32 h-32 rounded-3xl bg-gradient-to-tr from-cyan-500/10 to-purple-500/10 border border-white/10 flex items-center justify-center backdrop-blur-md shadow-inner"
+                    >
+                      <motion.span 
+                        className="text-5xl drop-shadow-2xl"
+                        animate={{ 
+                          y: [0, -8, 0],
+                          rotate: [0, 5, -5, 0]
+                        }}
+                        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                      >
+                         👨‍💻
+                      </motion.span>
+                    </motion.div>
+                    
+                    <div className="text-center space-y-1">
+                      <motion.p 
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.8 }}
+                        className="text-[var(--color-text-primary)] dark:text-zinc-300 font-bold tracking-[0.3em] uppercase text-xs"
+                      >
+                        Shahab
+                      </motion.p>
+                      <motion.div 
+                        initial={{ width: 0 }}
+                        animate={{ width: "100%" }}
+                        transition={{ delay: 1, duration: 0.8 }}
+                        className="h-px bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent mx-auto"
+                      />
+                      <motion.p 
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 1.2 }}
+                        className="text-cyan-500/70 text-[10px] font-mono tracking-widest uppercase mt-2"
+                      >
+                        Solutions Architect
+                      </motion.p>
+                    </div>
+                  </div>
+
+                  {/* Corner Accents */}
+                  <div className="absolute top-8 left-8 w-1.5 h-1.5 rounded-full bg-cyan-500/40 animate-pulse" />
+                  <div className="absolute bottom-8 right-8 w-10 h-10 border-r border-b border-white/5 dark:border-white/10 rounded-br-2xl" />
                 </div>
 
                 {/* Decorative Elements */}
@@ -126,15 +194,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-1 left-1/2 hidden lg:flex flex-col items-center gap-2 text-zinc-500">
-          <div className="text-xs tracking-widest">SCROLL</div>
-          <motion.div
-            animate={{ y: [0, 12, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="w-px h-12 bg-gradient-to-b from-transparent via-zinc-500 to-transparent"
-          />
-        </div>
+        
       </section>
       <AboutSection />
       <ExperienceSection />

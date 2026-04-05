@@ -183,7 +183,7 @@ export default function ExperienceSection() {
   ];
 
   return (
-    <section id="experience" className="py-24 bg-[var(--color-bg)] w-full relative overflow-hidden transition-colors duration-300">
+    <section id="experience" className="py-24 bg-[var(--color-bg)] w-full relative overflow-hidden transition-colors duration-300 border-b border-zinc-200 dark:border-zinc-800">
       {/* Subtle dot grid background */}
       <div className="absolute inset-0 bg-[radial-gradient(#334155_0.8px,transparent_1px)] dark:bg-[radial-gradient(#475569_0.8px,transparent_1px)] bg-[length:20px_20px] opacity-40 pointer-events-none" />
 

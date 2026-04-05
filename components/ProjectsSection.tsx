@@ -14,7 +14,7 @@ export default function ProjectsSection() {
   const displayedProjects = projects.slice(0, 3);
 
   return (
-    <section id="projects" className="py-24 bg-[var(--color-bg)] w-full overflow-hidden relative transition-colors duration-300">
+    <section id="projects" className="py-24 bg-[var(--color-bg)] w-full overflow-hidden relative transition-colors duration-300 border-b border-zinc-200 dark:border-zinc-800">
       {/* Subtle dot grid background */}
       <div className="absolute inset-0 bg-[radial-gradient(#334155_0.8px,transparent_1px)] dark:bg-[radial-gradient(#475569_0.8px,transparent_1px)] bg-[length:20px_20px] opacity-40 pointer-events-none" />
 

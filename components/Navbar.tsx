@@ -8,8 +8,9 @@ import Link from 'next/link';
 const NavLinks = [
   { name: 'Home', href: '/' },
   { name: 'About', href: '#about' },
-  { name: 'Projects', href: '#projects' },
+  { name: 'Experience', href: '#experience' },
   { name: 'Skills', href: '#skills' },
+  { name: 'Projects', href: '#projects' },
   { name: 'Contact', href: '#contact' },
 ];
 
@@ -37,8 +38,10 @@ export default function Navbar() {
         className={`
           w-full max-w-5xl px-0 py-4 flex justify-between items-center
           transition-all duration-500 rounded-3xl backdrop-blur-xl
-          border border-[var(--color-accent)]/10
-          ${scrolled ? 'bg-background/80 shadow-[0_20px_48px_-12px_rgba(0,0,0,0.18)] dark:shadow-[0_20px_48px_-12px_rgba(0,0,0,0.4)]' : 'bg-background/40 shadow-sm'}
+          border
+          ${scrolled 
+            ? 'bg-background/80 border-[var(--color-accent)]/30 shadow-[0_20px_48px_-12px_rgba(0,0,0,0.3)] dark:shadow-[0_20px_48px_-12px_rgba(0,0,0,0.6)]' 
+            : 'bg-background/40 border-[var(--color-accent)]/15 shadow-md'}
         `}
       >
         <div className="w-full flex justify-between items-center px-6">

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import {  HiOutlineCheckCircle, HiOutlineExclamationCircle } from 'react-icons/hi';
+import { HiOutlineMail, HiOutlineCheckCircle, HiOutlineExclamationCircle } from 'react-icons/hi';
 import { FaXTwitter,  FaLinkedinIn, FaGithub } from 'react-icons/fa6';
 import { CgSpinner } from 'react-icons/cg';
 
@@ -25,7 +25,13 @@ const fadeRightVariant = {
 
 /* ─── Info cards data ─── */
 const infoCards = [
-
+  {
+    icon: <HiOutlineMail className="w-5 h-5" />,
+    title: 'Email',
+    subtitle: 'bhuttoshahab15@gmail.com',
+    href: 'mailto:bhuttoshahab15@gmail.com',
+    external: false,
+  },
   {
     icon: <FaLinkedinIn className="w-5 h-5" />,
     title: 'LinkedIn',
@@ -93,7 +99,7 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      className="py-24 bg-[var(--color-bg)] w-full overflow-hidden relative transition-colors duration-300"
+      className="py-24 bg-[var(--color-bg)] w-full overflow-hidden relative transition-colors duration-300 border-b border-zinc-200 dark:border-zinc-800"
     >
       {/* Subtle dot grid background */}
       <div className="absolute inset-0 bg-[radial-gradient(#334155_0.8px,transparent_1px)] dark:bg-[radial-gradient(#475569_0.8px,transparent_1px)] bg-[length:20px_20px] opacity-40 pointer-events-none" />

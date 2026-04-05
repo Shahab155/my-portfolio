@@ -10,20 +10,20 @@ import { VscVscode } from 'react-icons/vsc';
 import { HiOutlineDatabase } from 'react-icons/hi';
 
 const skills = [
-  { name: 'Next.js', category: 'Framework', percentage: 90, color: 'var(--color-text-primary)', icon: <SiNextdotjs /> },
-  { name: 'React', category: 'Framework', percentage: 90, color: '#61dafb', icon: <SiReact /> },
+  { name: 'Next.js', category: 'Framework', percentage: 80, color: 'var(--color-text-primary)', icon: <SiNextdotjs /> },
+  { name: 'React', category: 'Framework', percentage: 80, color: '#61dafb', icon: <SiReact /> },
   { name: 'Tailwind CSS', category: 'Styling', percentage: 85, color: '#38bdf8', icon: <SiTailwindcss /> },
-  { name: 'JavaScript', category: 'Language', percentage: 85, color: '#f7df1e', icon: <SiJavascript /> },
-  { name: 'TypeScript', category: 'Language', percentage: 85, color: '#3178c6', icon: <SiTypescript /> },
-  { name: 'Python', category: 'Language', percentage: 75, color: '#3776ab', icon: <SiPython /> },
+  { name: 'JavaScript', category: 'Language', percentage: 80, color: '#f7df1e', icon: <SiJavascript /> },
+  { name: 'TypeScript', category: 'Language', percentage: 65, color: '#3178c6', icon: <SiTypescript /> },
+  { name: 'Python', category: 'Language', percentage: 70, color: '#3776ab', icon: <SiPython /> },
   { name: 'FastAPI', category: 'Framework', percentage: 55, color: '#009688', icon: <SiFastapi /> },
-  { name: 'PHP', category: 'Language', percentage: 90, color: '#777bb4', icon: <SiPhp /> },
-  { name: 'MySQL', category: 'Database', percentage: 85, color: '#4479a1', icon: <SiMysql /> },
+  { name: 'PHP', category: 'Language', percentage: 65, color: '#777bb4', icon: <SiPhp /> },
+  { name: 'MySQL', category: 'Database', percentage: 75, color: '#4479a1', icon: <SiMysql /> },
   { name: 'Neon DB', category: 'Database', percentage: 55, color: '#00e599', icon: <HiOutlineDatabase /> },
   { name: 'Claude Code', category: 'AI Tools', percentage: 70, color: '#d97757', icon: <SiAnthropic /> },
-  { name: 'OpenAI SDK', category: 'AI/ML', percentage: 65, color: '#412991', icon: <SiOpenai /> },
-  { name: 'Git', category: 'Tools', percentage: 75, color: '#f05032', icon: <SiGit /> },
-  { name: 'VS Code', category: 'Tools', percentage: 85, color: '#007acc', icon: <VscVscode /> },
+  { name: 'OpenAI SDK', category: 'Agentic AI', percentage: 65, color: '#412991', icon: <SiOpenai /> },
+  { name: 'Git', category: 'Tools', percentage: 65, color: '#f05032', icon: <SiGit /> },
+  { name: 'VS Code', category: 'Tools', percentage: 75, color: '#007acc', icon: <VscVscode /> },
 ];
 
 const CircularProgress = ({ percentage, color, iconItem }: { percentage: number, color: string, iconItem: React.ReactNode }) => {
@@ -86,7 +86,7 @@ export default function SkillsSection() {
   };
 
   return (
-    <section id="skills" className="py-24 bg-[var(--color-bg)] w-full overflow-hidden relative transition-colors duration-300">
+    <section id="skills" className="py-24 bg-[var(--color-bg)] w-full overflow-hidden relative transition-colors duration-300 border-b border-zinc-200 dark:border-zinc-800">
       {/* Subtle dot grid background */}
       <div className="absolute inset-0 bg-[radial-gradient(#334155_0.8px,transparent_1px)] dark:bg-[radial-gradient(#475569_0.8px,transparent_1px)] bg-[length:20px_20px] opacity-40 pointer-events-none" />
 
