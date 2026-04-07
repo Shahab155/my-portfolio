@@ -18,6 +18,15 @@ export const projects = [
     tech: ['Next.js', 'Framer Motion','TypeScript', 'Tailwind CSS'],
   },
   {
+    id: 'techz-ecommerce',
+    title: 'TechZ E-commerce',
+    description: 'TechZ is a high-performance e-commerce platform built with Next.js 16+ and Neon PostgreSQL, featuring a premium glassmorphism design using Tailwind CSS v4. It implements a stateless database architecture to eliminate connection bottlenecks and utilizes NextAuth for secure, role-based access control between the storefront and a comprehensive administrative dashboard.',
+    image: '/projects/techz.png',
+    repoUrl: 'https://github.com/Shahab155/ecommerce-store',
+    demoUrl: 'https://ecommerce-store-tau-steel.vercel.app/',
+    tech: ['Next.js', 'Tailwind CSS', 'Neon PostgreSQL', 'NextAuth'],
+  },
+  {
     id: 'inventory',
     title: 'Inventory Management System',
     description: 'A full-featured inventory management system built with Python and Streamlit, featuring real-time stock tracking, SQLite database, and secure admin login.',
@@ -45,3 +54,4 @@ export const projects = [
     tech: ['Next.js', 'CSS', 'AOS Animation'],
   }
 ];
+
