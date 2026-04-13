@@ -61,7 +61,7 @@ export default function Navbar() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="relative text-md font-medium text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-all group"
+                  className="relative text-md font-medium text-zinc-900 dark:text-white hover:text-[var(--color-accent)] transition-all group"
                 >
                   {link.name}
                   <motion.span 
@@ -132,7 +132,7 @@ export default function Navbar() {
                   <Link
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    className="text-xl font-semibold text-[var(--color-text-secondary)] hover:text-[var(--color-accent)] transition-colors block py-2"
+                    className="text-xl font-semibold text-zinc-900 dark:text-white hover:text-[var(--color-accent)] transition-colors block py-2"
                   >
                     {link.name}
                   </Link>

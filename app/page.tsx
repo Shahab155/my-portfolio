@@ -136,7 +136,7 @@ export default function Home() {
                 className="relative w-full max-w-[320px] lg:max-w-[360px]"
               >
                 {/* Main Glass Card */}
-                <div className="relative aspect-[3/4.2] rounded-[3rem] bg-white/5 dark:bg-zinc-900/20 backdrop-blur-2xl border border-white/20 dark:border-white/10 overflow-hidden shadow-2xl shadow-cyan-500/10 flex flex-col items-center justify-center group transition-all duration-500 will-change-transform">
+                <div className="relative aspect-[3/4.2] rounded-[3rem] bg-white/5 dark:bg-zinc-900/20 backdrop-blur-2xl border border-[var(--color-accent)]/30 dark:border-white/10 overflow-hidden shadow-2xl shadow-cyan-500/10 flex flex-col items-center justify-center group transition-all duration-500 will-change-transform">
                   
                   {/* Shimmer Effect */}
                   <motion.div 
