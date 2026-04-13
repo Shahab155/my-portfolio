@@ -43,15 +43,23 @@ export default function ProjectsSection() {
         </motion.div>
 
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {displayedProjects.map((project, index) => (
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={{
+            visible: {
+              transition: {
+                staggerChildren: 0.1
+              }
+            }
+          }}
+        >
+          {displayedProjects.map((project) => (
             <motion.div
               key={project.id}
               variants={fadeUpVariant}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               {/* Card Wrapper with Gradient Border Effect */}
               <div className="h-full rounded-[2rem] p-[1px] bg-gradient-to-b from-[var(--color-accent)]/30 to-transparent hover:from-[var(--color-accent)]/50 hover:to-cyan-500/20 transition-all duration-500 group">
@@ -127,7 +135,7 @@ export default function ProjectsSection() {
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* View More Button */}
         <motion.div

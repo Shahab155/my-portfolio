@@ -126,28 +126,29 @@ export default function SkillsSection() {
         
         {/* Section Heading */}
         <motion.div
-          variants={fadeUpVariant}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.6 }}
+          variants={{
+            visible: { transition: { staggerChildren: 0.1 } }
+          }}
           className="text-center mb-20 px-4"
         >
-          <div className="flex justify-center items-center gap-4 mb-6">
+          <motion.div variants={fadeUpVariant} className="flex justify-center items-center gap-4 mb-6">
             <div className="w-8 h-[1px] bg-[var(--color-accent)] opacity-50"></div>
             <span className="text-xs tracking-widest text-[var(--color-accent)] uppercase font-bold">
               TECHNOLOGIES & SKILLS
             </span>
             <div className="w-8 h-[1px] bg-[var(--color-accent)] opacity-50"></div>
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-center text-[var(--color-text-primary)] dark:text-white mb-8">
+          </motion.div>
+          <motion.h2 variants={fadeUpVariant} className="text-4xl md:text-5xl font-bold text-center text-[var(--color-text-primary)] dark:text-white mb-8">
             MY TECH STACK
-          </h2>
-         
+          </motion.h2>
         </motion.div>
 
         {/* Skills Slider */}
-        <div className="relative w-full mb-20 group py-4">
+        <div className="relative w-full  group py-4">
           {/* Gradient Masks for fading edges */}
           <div className="absolute left-0 top-0 bottom-0 w-12 md:w-24 bg-gradient-to-r from-[var(--color-bg)] to-transparent z-10 pointer-events-none" />
           <div className="absolute right-0 top-0 bottom-0 w-12 md:w-24 bg-gradient-to-l from-[var(--color-bg)] to-transparent z-10 pointer-events-none" />

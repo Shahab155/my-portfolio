@@ -34,10 +34,11 @@ const ExperienceEntry = ({
 }: ExperienceEntryProps) => {
   return (
     <motion.div
-      initial={{ opacity: 0, x: -20 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true, amount: 0.1 }}
-      transition={{ duration: 0.5, delay }}
+      variants={{
+        hidden: { opacity: 0, x: -20 },
+        visible: { opacity: 1, x: 0 }
+      }}
+      transition={{ duration: 0.5 }}
       className={`relative pl-16 ${!isLast ? 'border-b border-zinc-800/50 pb-10' : ''}`}
     >
       {/* Timeline Node */}
@@ -99,10 +100,11 @@ const ExperienceEntry = ({
         {bullets.map((bullet, idx) => (
           <motion.div
             key={idx}
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: delay + 0.2 + idx * 0.1 }}
+            variants={{
+              hidden: { opacity: 0, y: 10 },
+              visible: { opacity: 1, y: 0 }
+            }}
+            transition={{ duration: 0.4 }}
             className="flex items-start gap-2 group"
           >
             <HiOutlineChevronRight
@@ -121,10 +123,11 @@ const ExperienceEntry = ({
         {tags.map((tag, idx) => (
           <motion.span
             key={idx}
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.3, delay: delay + 0.4 + idx * 0.05 }}
+            variants={{
+              hidden: { opacity: 0, scale: 0.9 },
+              visible: { opacity: 1, scale: 1 }
+            }}
+            transition={{ duration: 0.3 }}
             className="text-xs px-3 py-1.5 rounded-full bg-zinc-900 text-zinc-400 border border-zinc-800 hover:border-cyan-500/50 hover:text-cyan-400 transition-all duration-300 cursor-default"
           >
             {tag}
@@ -225,16 +228,28 @@ export default function ExperienceSection() {
           />
 
           {/* Timeline Entries */}
-          <div className="flex flex-col gap-10">
+          <motion.div 
+            className="flex flex-col gap-10"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+            variants={{
+              visible: {
+                transition: {
+                  staggerChildren: 0.2
+                }
+              }
+            }}
+          >
             {experiences.map((exp, index) => (
               <ExperienceEntry
                 key={index}
                 {...exp}
                 isLast={index === experiences.length - 1}
-                delay={0.2 + index * 0.2}
+                // delay removed as staggerChildren handles it
               />
             ))}
-          </div>
+          </motion.div>
         </div>
         </div>
       </div>

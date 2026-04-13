@@ -16,15 +16,23 @@ export default function AboutSection() {
       {/* Subtle dot grid background */}
       <div className="absolute inset-0 bg-[radial-gradient(#334155_0.8px,transparent_1px)] dark:bg-[radial-gradient(#475569_0.8px,transparent_1px)] bg-[length:20px_20px] opacity-40 pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
+      <motion.div 
+        className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={{
+          visible: {
+            transition: {
+              staggerChildren: 0.1,
+            }
+          }
+        }}
+      >
         <div className="max-w-3xl mx-auto text-center">
         {/* SECTION LABEL */}
         <motion.div
           variants={fadeUpVariant}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6 }}
           className="flex justify-center items-center gap-4 mb-4"
         >
           <div className="w-8 h-px bg-cyan-500 opacity-50" />
@@ -37,10 +45,6 @@ export default function AboutSection() {
         {/* HEADING */}
         <motion.h2
           variants={fadeUpVariant}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
           className="text-4xl font-bold text-[var(--color-text-primary)] dark:text-white mt-4"
         >
           A Little About Me
@@ -50,20 +54,12 @@ export default function AboutSection() {
         <div className="mt-6 space-y-4">
           <motion.p
             variants={fadeUpVariant}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
             className="text-base font-light text-zinc-700 dark:text-zinc-400 leading-relaxed tracking-wide"
           >
             I am Shahab Ud Din, a Full Stack Developer from Pakistan. I have been working on building web applications for more than one year now.
           </motion.p>
           <motion.p
             variants={fadeUpVariant}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
             className="text-base font-light text-zinc-700 dark:text-zinc-400 leading-relaxed tracking-wide"
           >
             Beyond web development, I am currently exploring
@@ -72,15 +68,9 @@ export default function AboutSection() {
           </motion.p>
         </div>
 
-        
-
         {/* STATS ROW */}
         <motion.div
           variants={fadeUpVariant}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
           className="flex justify-center items-center mt-8 divide-x divide-zinc-200 dark:divide-zinc-800"
         >
           {/* Stat 1 */}
@@ -102,7 +92,7 @@ export default function AboutSection() {
           </div>
         </motion.div>
       </div>
-    </div>
+    </motion.div>
     </section>
   );
 }
