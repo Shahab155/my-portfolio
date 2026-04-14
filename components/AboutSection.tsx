@@ -56,7 +56,7 @@ export default function AboutSection() {
             variants={fadeUpVariant}
             className="text-base font-light text-zinc-700 dark:text-zinc-400 leading-relaxed tracking-wide"
           >
-            I am Shahab Ud Din, a Full Stack Developer from Pakistan. I have been working on building web applications for more than one year now.
+            I am Shahab Ud Din, a Full Stack Developer from Pakistan. I have been working on building web applications since 2024.
           </motion.p>
           <motion.p
             variants={fadeUpVariant}
