@@ -50,7 +50,23 @@
   body {
     background-color: var(--color-bg);
     color: var(--color-text-primary);
+    caret-color: var(--color-accent);
     @apply antialiased;
+  }
+
+  /* SVG-based cursor to match accent color without JS overhead */
+  html {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='%2322D3EE' stroke='white' stroke-width='1.5' stroke-linejoin='round'%3E%3Cpath d='M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z'%3E%3C/path%3E%3C/svg%3E"), auto;
+  }
+
+  /* Interactive elements cursor */
+  a, button, [role="button"], input, select, textarea {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='%2322D3EE' stroke='white' stroke-width='1.5' stroke-linejoin='round'%3E%3Cpath d='M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z'%3E%3C/path%3E%3C/svg%3E"), pointer;
+  }
+
+  ::selection {
+    background-color: var(--color-accent);
+    color: #000;
   }
 
 }

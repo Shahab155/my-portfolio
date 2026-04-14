@@ -88,10 +88,21 @@ export default function SkillsSection() {
 
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [isInteracting, setIsInteracting] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
 
   useEffect(() => {
     const container = scrollContainerRef.current;
     if (!container) return;
+
+    // Initialize scroll position to the middle to allow immediate leftward movement (Left -> Right visual)
+    const setInitialScroll = () => {
+      container.scrollLeft = container.scrollWidth / 2;
+    };
+    
+    // Small delay to ensure layout is calculated
+    const timeoutId = setTimeout(setInitialScroll, 100);
 
     let animationFrameId: number;
     let lastTime = performance.now();
@@ -101,12 +112,14 @@ export default function SkillsSection() {
       const deltaTime = currentTime - lastTime;
       lastTime = currentTime;
 
-      if (!isInteracting) {
-        container.scrollLeft += speed * deltaTime;
+      // Only auto-scroll if not interacting (hovering or dragging)
+      if (!isInteracting && !isDragging) {
+        // Decrease scrollLeft to move items visually from Left to Right
+        container.scrollLeft -= speed * deltaTime;
 
-        // If we have scrolled past halfway (since we doubled the items), reset to 0 for infinite loop
-        if (container.scrollLeft >= container.scrollWidth / 2) {
-          container.scrollLeft = 0;
+        // If we reach the start, jump back to the middle for a seamless loop
+        if (container.scrollLeft <= 0) {
+          container.scrollLeft = container.scrollWidth / 2;
         }
       }
       animationFrameId = requestAnimationFrame(autoScroll);
@@ -114,8 +127,30 @@ export default function SkillsSection() {
 
     animationFrameId = requestAnimationFrame(autoScroll);
 
-    return () => cancelAnimationFrame(animationFrameId);
-  }, [isInteracting]);
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+      clearTimeout(timeoutId);
+    };
+  }, [isInteracting, isDragging]);
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!scrollContainerRef.current) return;
+    setIsDragging(true);
+    setStartX(e.pageX - scrollContainerRef.current.offsetLeft);
+    setScrollLeft(scrollContainerRef.current.scrollLeft);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || !scrollContainerRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - scrollContainerRef.current.offsetLeft;
+    const walk = (x - startX) * 1.5; // Scroll speed multiplier
+    scrollContainerRef.current.scrollLeft = scrollLeft - walk;
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
 
   return (
     <section id="skills" className="py-24 bg-[var(--color-bg)] w-full overflow-hidden relative transition-colors duration-300 border-b border-zinc-200 dark:border-zinc-800">
@@ -148,7 +183,7 @@ export default function SkillsSection() {
         </motion.div>
 
         {/* Skills Slider */}
-        <div className="relative w-full  group py-4">
+        <div className="relative w-full group py-4">
           {/* Gradient Masks for fading edges */}
           <div className="absolute left-0 top-0 bottom-0 w-12 md:w-24 bg-gradient-to-r from-[var(--color-bg)] to-transparent z-10 pointer-events-none" />
           <div className="absolute right-0 top-0 bottom-0 w-12 md:w-24 bg-gradient-to-l from-[var(--color-bg)] to-transparent z-10 pointer-events-none" />
@@ -157,14 +192,20 @@ export default function SkillsSection() {
           <div 
             ref={scrollContainerRef}
             onMouseEnter={() => setIsInteracting(true)}
-            onMouseLeave={() => setIsInteracting(false)}
+            onMouseLeave={() => {
+              setIsInteracting(false);
+              setIsDragging(false);
+            }}
+            onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUp}
             onTouchStart={() => setIsInteracting(true)}
             onTouchEnd={() => setIsInteracting(false)}
-            className="flex gap-4 md:gap-8 overflow-x-auto px-12 md:px-24 hide-scrollbar"
+            className="flex gap-4 md:gap-8 overflow-x-auto px-12 md:px-24 hide-scrollbar cursor-grab active:cursor-grabbing select-none"
           >
             {[...skills, ...skills].map((skill, index) => (
               <div
-                key={index}
+                key={`${skill.name}-${index}`}
                 className="flex flex-col items-center w-40 md:w-48 lg:w-56 shrink-0"
               >
                 <CircularProgress 

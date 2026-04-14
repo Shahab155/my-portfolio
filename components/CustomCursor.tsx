@@ -69,16 +69,16 @@ export default function CustomCursor() {
 
   return (
     <div className="fixed inset-0 pointer-events-none z-[9999] overflow-hidden">
-      {/* Luminous Trail - Purple Blur */}
+      {/* Luminous Trail - Outer Blur */}
       <motion.div
         style={{ x: trail3X, y: trail3Y }}
-        className="absolute w-12 h-12 -left-6 -top-6 rounded-full bg-purple-500/20 blur-3xl"
+        className="absolute w-12 h-12 -left-6 -top-6 rounded-full bg-accent/20 blur-3xl"
       />
       
-      {/* Luminous Trail - Cyan Blur */}
+      {/* Luminous Trail - Inner Blur */}
       <motion.div
         style={{ x: trail2X, y: trail2Y }}
-        className="absolute w-8 h-8 -left-4 -top-4 rounded-full bg-cyan-500/10 blur-2xl"
+        className="absolute w-8 h-8 -left-4 -top-4 rounded-full bg-accent/10 blur-2xl"
       />
       
       {/* Main Glow Base */}
@@ -86,9 +86,10 @@ export default function CustomCursor() {
         style={{ x: mainX, y: mainY }}
         animate={{
           scale: isHovering ? 2 : 1,
-          backgroundColor: isHovering ? 'rgba(34, 211, 238, 0.4)' : 'rgba(34, 211, 238, 0.1)',
+          backgroundColor: isHovering ? 'var(--color-accent)' : 'var(--color-accent)',
+          opacity: isHovering ? 0.4 : 0.1,
         }}
-        className="absolute w-16 h-16 -left-8 -top-8 rounded-full blur-[40px] transition-colors duration-300"
+        className="absolute w-16 h-16 -left-8 -top-8 rounded-full blur-[40px] transition-all duration-300"
       />
 
        {/* Core Point Glow */}
@@ -98,7 +99,7 @@ export default function CustomCursor() {
           scale: isHovering ? 1.5 : 1,
           opacity: isHovering ? 1 : 0.8,
         }}
-        className="absolute w-4 h-4 -left-2 -top-2 rounded-full bg-cyan-400 blur-sm opacity-80"
+        className="absolute w-4 h-4 -left-2 -top-2 rounded-full bg-accent blur-sm opacity-80"
       />
 
        {/* Precision Dot */}
