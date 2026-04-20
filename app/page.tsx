@@ -18,9 +18,9 @@ export default function Home() {
     setIsVisible(true);
   }, []);
 
-  const scrollToContact = () => {
-    const contactSection = document.getElementById('contact');
-    contactSection?.scrollIntoView({
+  const scrollToProjects = () => {
+    const projectsSection = document.getElementById('projects');
+    projectsSection?.scrollIntoView({
       behavior: 'smooth',
       block: 'start',
     });
@@ -109,10 +109,8 @@ export default function Home() {
               <div className="flex flex-wrap gap-4 mt-8">
                 <motion.button
                   suppressHydrationWarning
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.98 }}
-                  onClick={scrollToContact}
-                  className="px-10 py-4 bg-[var(--color-accent)] hover:bg-cyan-400 transition-all text-black font-semibold text-lg rounded-full flex items-center gap-3 shadow-lg shadow-cyan-500/30"
+                  onClick={scrollToProjects}
+                  className="px-10 py-4 bg-[var(--color-accent)] hover:bg-cyan-400 transition-all text-black font-semibold text-md rounded-full flex items-center gap-3 shadow-lg shadow-cyan-500/30"
                 >
                   View my Work
                   <span className="text-xl">→</span>
@@ -121,20 +119,18 @@ export default function Home() {
                 <motion.a
                   href="/ShahabResume (1).pdf"
                   download="Shahab_Resume.pdf"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="px-10 py-4 bg-transparent border-2 border-[var(--color-accent)] text-[var(--color-accent)] hover:bg-[var(--color-accent)] hover:text-black transition-all font-semibold text-lg rounded-full flex items-center gap-3 group hover:shadow-[0_0_20px_var(--color-accent)]"
+                  className="px-10 py-4 bg-transparent border-2 border-[var(--color-accent)] text-[var(--color-accent)] hover:bg-[var(--color-accent)] hover:text-black transition-all font-semibold text-md rounded-full flex items-center gap-3 group hover:shadow-[0_0_20px_var(--color-accent)]"
                 >
                   Download Resume
-                  <motion.svg 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    width="20" 
-                    height="20" 
-                    viewBox="0 0 24 24" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    strokeWidth="2" 
-                    strokeLinecap="round" 
+                  <motion.svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
                     strokeLinejoin="round"
                     animate={{ y: [0, 2, 0] }}
                     transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
