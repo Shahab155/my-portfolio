@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 
-import { 
+import {
   SiNextdotjs, SiReact, SiTailwindcss, SiJavascript, SiTypescript,
   SiPython, SiFastapi, SiPhp, SiMysql, SiAnthropic, SiOpenai, SiGit
 } from 'react-icons/si';
@@ -33,18 +33,18 @@ const CircularProgress = ({ percentage, color, iconItem }: { percentage: number,
   const strokeDashoffset = circumference - (percentage / 100) * circumference;
 
   return (
-    <motion.div 
+    <motion.div
       className="relative flex items-center justify-center w-28 md:w-36 lg:w-40  mx-auto mb-4 group"
       whileHover={{ scale: 1.05 }}
       transition={{ duration: 0.3 }}
       style={{ '--skill-color': color } as React.CSSProperties}
     >
       {/* Background Glow */}
-      <div 
+      <div
         className="absolute inset-0 rounded-full blur-2xl opacity-5 dark:opacity-20 group-hover:opacity-10 dark:group-hover:opacity-40 transition-opacity duration-500"
         style={{ backgroundColor: color }}
       />
-      
+
       <svg className="relative w-full h-full transform -rotate-90 pointer-events-none">
         {/* Inner dimmed track visually filled */}
         <circle
@@ -70,8 +70,8 @@ const CircularProgress = ({ percentage, color, iconItem }: { percentage: number,
         />
       </svg>
       {/* Center content */}
-      <div 
-        className="absolute flex items-center justify-center text-4xl md:text-5xl pointer-events-none" 
+      <div
+        className="absolute flex items-center justify-center text-4xl md:text-5xl pointer-events-none"
         style={{ color: color }}
       >
         {iconItem}
@@ -100,7 +100,7 @@ export default function SkillsSection() {
     const setInitialScroll = () => {
       container.scrollLeft = container.scrollWidth / 2;
     };
-    
+
     // Small delay to ensure layout is calculated
     const timeoutId = setTimeout(setInitialScroll, 100);
 
@@ -158,7 +158,7 @@ export default function SkillsSection() {
       <div className="absolute inset-0 bg-[radial-gradient(#334155_0.8px,transparent_1px)] dark:bg-[radial-gradient(#475569_0.8px,transparent_1px)] bg-[length:20px_20px] opacity-40 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        
+
         {/* Section Heading */}
         <motion.div
           initial="hidden"
@@ -189,7 +189,7 @@ export default function SkillsSection() {
           <div className="absolute right-0 top-0 bottom-0 w-12 md:w-24 bg-gradient-to-l from-[var(--color-bg)] to-transparent z-10 pointer-events-none" />
 
           {/* Scrollable Track */}
-          <div 
+          <div
             ref={scrollContainerRef}
             onMouseEnter={() => setIsInteracting(true)}
             onMouseLeave={() => {
@@ -208,12 +208,12 @@ export default function SkillsSection() {
                 key={`${skill.name}-${index}`}
                 className="flex flex-col items-center w-40 md:w-48 lg:w-56 shrink-0"
               >
-                <CircularProgress 
-                  percentage={skill.percentage} 
-                  color={skill.color} 
-                  iconItem={skill.icon} 
+                <CircularProgress
+                  percentage={skill.percentage}
+                  color={skill.color}
+                  iconItem={skill.icon}
                 />
-                
+
                 <h3 className="font-bold text-[var(--color-text-primary)] dark:text-white text-lg md:text-xl text-center mb-1 drop-shadow-sm">
                   {skill.name}
                 </h3>

@@ -66,7 +66,7 @@ export default function Home() {
               transition={{ duration: 0.8, ease: "easeOut" }}
               className="space-y-8 lg:pt-12"
             >
-             
+
 
               {/* Heading */}
               <div className="space-y-3">
@@ -105,17 +105,46 @@ export default function Home() {
                 with clean, maintainable code and exceptional user experiences.
               </p>
 
-              {/* CTA Button */}
-              <motion.button
-                suppressHydrationWarning
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
-                onClick={scrollToContact}
-                className="mt-8 px-10 py-4 bg-[var(--color-accent)] hover:bg-cyan-400 transition-all text-black font-semibold text-lg rounded-full flex items-center gap-3 shadow-lg shadow-cyan-500/30"
-              >
-               View my Work
-                <span className="text-xl">→</span>
-              </motion.button>
+              {/* CTA Buttons */}
+              <div className="flex flex-wrap gap-4 mt-8">
+                <motion.button
+                  suppressHydrationWarning
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={scrollToContact}
+                  className="px-10 py-4 bg-[var(--color-accent)] hover:bg-cyan-400 transition-all text-black font-semibold text-lg rounded-full flex items-center gap-3 shadow-lg shadow-cyan-500/30"
+                >
+                  View my Work
+                  <span className="text-xl">→</span>
+                </motion.button>
+
+                <motion.a
+                  href="/ShahabResume (1).pdf"
+                  download="Shahab_Resume.pdf"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="px-10 py-4 bg-transparent border-2 border-[var(--color-accent)] text-[var(--color-accent)] hover:bg-[var(--color-accent)] hover:text-black transition-all font-semibold text-lg rounded-full flex items-center gap-3 group hover:shadow-[0_0_20px_var(--color-accent)]"
+                >
+                  Download Resume
+                  <motion.svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    width="20" 
+                    height="20" 
+                    viewBox="0 0 24 24" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    strokeWidth="2" 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round"
+                    animate={{ y: [0, 2, 0] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="7 10 12 15 17 10" />
+                    <line x1="12" y1="15" x2="12" y2="3" />
+                  </motion.svg>
+                </motion.a>
+              </div>
             </motion.div>
 
             {/* RIGHT COLUMN - 3D Card */}
@@ -127,9 +156,9 @@ export default function Home() {
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}
             >
-              <motion.div 
-                style={{ 
-                  rotateX, 
+              <motion.div
+                style={{
+                  rotateX,
                   rotateY,
                   transformStyle: "preserve-3d"
                 }}
@@ -137,9 +166,9 @@ export default function Home() {
               >
                 {/* Main Glass Card */}
                 <div className="relative aspect-[3/4.2] rounded-[3rem] bg-white/5 dark:bg-zinc-900/20 backdrop-blur-2xl border border-[var(--color-accent)]/30 dark:border-white/10 overflow-hidden shadow-2xl shadow-cyan-500/10 flex flex-col items-center justify-center group transition-all duration-500 will-change-transform">
-                  
+
                   {/* Shimmer Effect */}
-                  <motion.div 
+                  <motion.div
                     animate={{
                       left: ["-100%", "200%"],
                     }}
@@ -153,7 +182,7 @@ export default function Home() {
                   />
 
                   {/* Laser Scan Effect */}
-                  <motion.div 
+                  <motion.div
                     animate={{
                       top: ["-10%", "110%"],
                       opacity: [0, 1, 1, 0]
@@ -170,8 +199,8 @@ export default function Home() {
                   {/* Animated Background Grid */}
                   <div className="absolute inset-0 opacity-20 pointer-events-none">
                     <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px]" />
-                    <motion.div 
-                      animate={{ 
+                    <motion.div
+                      animate={{
                         opacity: [0.1, 0.3, 0.1]
                       }}
                       transition={{ duration: 4, repeat: Infinity }}
@@ -181,42 +210,42 @@ export default function Home() {
 
                   {/* Centered Content */}
                   <div className="relative z-10 flex flex-col items-center gap-8" style={{ transform: "translateZ(50px)" }}>
-                      <motion.div 
-                        initial={{ scale: 0.9, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        transition={{ duration: 1, delay: 0.5 }}
-                        className="relative z-10 w-32 h-32 rounded-3xl bg-gradient-to-tr from-cyan-500/20 to-purple-500/20 border border-white/20 flex items-center justify-center backdrop-blur-xl shadow-2xl"
+                    <motion.div
+                      initial={{ scale: 0.9, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      transition={{ duration: 1, delay: 0.5 }}
+                      className="relative z-10 w-32 h-32 rounded-3xl bg-gradient-to-tr from-[var(--color-accent)]/20 to-cyan-500/10 border border-[var(--color-accent)]/20 flex items-center justify-center backdrop-blur-xl shadow-2xl"
+                    >
+                      <motion.span
+                        className="text-7xl drop-shadow-[0_0_15px_rgba(34,211,238,0.5)]"
+                        animate={{
+                          y: [0, -10, 0],
+                          rotate: [0, 5, -5, 0]
+                        }}
+                        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
                       >
-                        <motion.span 
-                          className="text-7xl drop-shadow-[0_0_15px_rgba(34,211,238,0.5)]"
-                          animate={{ 
-                            y: [0, -10, 0],
-                            rotate: [0, 5, -5, 0]
-                          }}
-                          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                        >
-                           👨‍💻
-                        </motion.span>
-                      </motion.div>
-                    </div>
-                    
-                    <div className="text-center space-y-2">
-                       <motion.div 
-                        initial={{ width: 0 }}
-                        animate={{ width: "60%" }}
-                        transition={{ delay: 1, duration: 0.8 }}
-                        className="h-1 bg-gradient-to-r from-transparent via-cyan-500 to-transparent mx-auto mb-4"
-                      />
-                     
-                      <motion.p 
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 1.2 }}
-                        className="text-cyan-400 text-sm tracking-[0.4em] uppercase font-medium"
-                      >
-                        Full Stack Developer
-                      </motion.p>
-                    </div>
+                        👨‍💻
+                      </motion.span>
+                    </motion.div>
+                  </div>
+
+                  <div className="text-center space-y-2">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      animate={{ width: "60%" }}
+                      transition={{ delay: 1, duration: 0.8 }}
+                      className="h-1 bg-gradient-to-r from-transparent via-cyan-500 to-transparent mx-auto mb-4"
+                    />
+
+                    <motion.p
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 1.2 }}
+                      className="text-cyan-400 text-sm tracking-[0.4em] uppercase font-medium"
+                    >
+                      Full Stack Developer
+                    </motion.p>
+                  </div>
 
                   {/* Corner Accents */}
                   <div className="absolute top-10 left-10 w-2 h-2 rounded-full bg-cyan-500 shadow-[0_0_10px_#22d3ee] animate-pulse" />
@@ -224,20 +253,20 @@ export default function Home() {
                 </div>
 
 
-                <motion.div 
+                <motion.div
                   animate={{ y: [0, 15, 0], rotate: -360 }}
                   transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
                   className="absolute top-1/2 -right-4 w-12 h-12 bg-zinc-900/80 backdrop-blur-md rounded-xl border border-white/10 flex items-center justify-center shadow-xl z-30"
                 >
-                   <div className="w-5 h-5 flex flex-wrap gap-1">
-                      <div className="w-2 h-2 bg-purple-500 rounded-sm" />
-                      <div className="w-2 h-2 bg-cyan-500 rounded-sm" />
-                      <div className="w-2 h-2 bg-cyan-500 rounded-sm" />
-                      <div className="w-2 h-2 bg-purple-500 rounded-sm" />
-                   </div>
+                  <div className="w-5 h-5 flex flex-wrap gap-1">
+                    <div className="w-2 h-2 bg-purple-500 rounded-sm" />
+                    <div className="w-2 h-2 bg-cyan-500 rounded-sm" />
+                    <div className="w-2 h-2 bg-cyan-500 rounded-sm" />
+                    <div className="w-2 h-2 bg-purple-500 rounded-sm" />
+                  </div>
                 </motion.div>
 
-                <motion.div 
+                <motion.div
                   animate={{ scale: [1, 1.1, 1] }}
                   transition={{ duration: 4, repeat: Infinity }}
                   className="absolute -bottom-6 -left-4 bg-zinc-950 border border-zinc-800 text-white px-6 py-4 rounded-2xl shadow-2xl flex items-center gap-4 z-40"
@@ -257,7 +286,7 @@ export default function Home() {
           </div>
         </div>
 
-        
+
       </section>
       <AboutSection />
       <ExperienceSection />
@@ -265,6 +294,6 @@ export default function Home() {
       <ProjectsSection />
       <ContactSection />
       <Footer />
-    </main>
+    </main >
   );
 }
