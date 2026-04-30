@@ -7,7 +7,8 @@ interface ExperienceEntryProps {
   role: string;
   company: string;
   companyFull?: string;
-  duration: string;
+  startDate: string;
+  endDate: string;
   durationBadge: string;
   typeBadge: string;
   location: string;
@@ -22,7 +23,8 @@ const ExperienceEntry = ({
   role,
   company,
   companyFull,
-  duration,
+  startDate,
+  endDate,
   durationBadge,
   typeBadge,
   location,
@@ -87,7 +89,7 @@ const ExperienceEntry = ({
       <div className="flex gap-4 flex-wrap mt-2">
         <div className="flex items-center gap-1.5">
           <HiOutlineCalendarDays className="text-[var(--color-text-secondary)] dark:text-zinc-500" size={14} />
-          <span className="text-xs text-[var(--color-text-secondary)] dark:text-zinc-500">{duration}</span>
+          <span className="text-xs text-[var(--color-text-secondary)] dark:text-zinc-500">{startDate} — {endDate}</span>
         </div>
         <div className="flex items-center gap-1.5">
           <HiOutlineMapPin className="text-[var(--color-text-secondary)] dark:text-zinc-500" size={14} />
@@ -144,7 +146,8 @@ export default function ExperienceSection() {
       role: 'Python Trainer',
       company: 'NAVTTC',
       companyFull: '(National Vocational and Technical Training Commission)',
-      duration: '2+ Months & Ongoing',
+      startDate: 'Feb 2026',
+      endDate: 'Present',
       durationBadge: '2+ Months',
       typeBadge: 'Currently Working',
       location: 'Hyderabad, Pakistan',
@@ -156,10 +159,11 @@ export default function ExperienceSection() {
       tags: ['Python', 'Teaching', 'Training'],
     },
     {
-      role: 'Full Stack Developer',
+      role: 'Junior Web Developer',
       company: 'IRIS Software Solutions',
-      duration: '3 Months',
-      durationBadge: '3 Months',
+      startDate: 'August 2025',
+      endDate: 'January 2026',
+      durationBadge: '6 Months',
       typeBadge: 'Employment',
       location: 'Hyderabad, Pakistan',
       bullets: [
@@ -167,17 +171,18 @@ export default function ExperienceSection() {
         'Built and maintained web applications using Next.js and Tailwind CSS for modern responsive frontends.',
         'Handled backend and database tasks using PHP and MySQL to support application functionality.',
       ],
-      tags: ['Next.js', 'Tailwind CSS', 'PHP', 'MySQL'],
+      tags: ['Next.js', 'Tailwind CSS', 'PHP', 'MySQL', 'XAMPP'],
     },
     {
-      role: 'Full Stack Developer Intern',
+      role: 'Web Developer Intern',
       company: 'IRIS Software Solutions',
-      duration: '3 Months',
+      startDate: 'May 2025',
+      endDate: 'July 2025',
       durationBadge: '3 Months',
       typeBadge: 'Internship',
       location: 'Hyderabad, Pakistan',
       bullets: [
-        'Completed a 3-month internship building full stack web applications using PHP, MySQL, and XAMPP.',
+        'Completed a 3-month internship building full stack web applications using PHP, MySQL, XAMPP, Next.js and Tailwind CSS.',
         'Gained hands-on experience working in a professional software house environment collaborating with a team on live projects.',
         'Transitioned into a full-time employment role at the same company after successfully completing the internship.',
       ],
