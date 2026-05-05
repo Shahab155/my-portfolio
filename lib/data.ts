@@ -2,11 +2,11 @@ export const projects = [
   {
     id: 'focus-app',
     title: 'Focus App',
-    description: 'A modern and intuitive productivity app that enhances your focus by prioritizing your most important top 3 three goals that matters the most to aviod distractions. It helps you to stay focused and achieve your goals with ease.',
+    description: 'A modern and intuitive AI-Powered productivity app that enhances your focus by prioritizing your most important top 3 three goals that matters the most to aviod distractions. It helps you to stay focused and achieve your goals with ease.',
     image: '/projects/focuss.png',
     repoUrl: 'https://github.com/Shahab155/focus-app',
     demoUrl: 'https://focus-app-tawny-nine.vercel.app/',
-    tech: ['Next.js', 'TypeScript', 'Tailwind CSS', "NextAuth"],
+    tech: ['Next.js', 'TypeScript',"OpenAI Agents SDK", 'Tailwind CSS', "NextAuth"],
   },
   {
     id: 'fisherman-website',

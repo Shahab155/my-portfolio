@@ -38,16 +38,16 @@ export default function Navbar() {
         className={`
           w-full max-w-5xl px-0 py-4 flex justify-between items-center
           transition-all duration-500 rounded-3xl backdrop-blur-xl
-          border
-          ${scrolled 
-            ? 'bg-background/80 border-[var(--color-accent)]/30 shadow-[0_20px_48px_-12px_rgba(0,0,0,0.3)] dark:shadow-[0_20px_48px_-12px_rgba(0,0,0,0.6)]' 
+          border-2
+          ${scrolled
+            ? 'bg-background/80 border-[var(--color-accent)]/30 shadow-[0_20px_48px_-12px_rgba(0,0,0,0.3)] dark:shadow-[0_20px_48px_-12px_rgba(0,0,0,0.6)]'
             : 'bg-background/40 border-[var(--color-accent)]/15 shadow-md'}
         `}
       >
         <div className="w-full flex justify-between items-center px-6">
           {/* Logo */}
-          <Link 
-            href="/" 
+          <Link
+            href="/"
             className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-[var(--color-primary)] dark:text-[var(--color-accent)] group"
           >
             Shahab
@@ -64,7 +64,7 @@ export default function Navbar() {
                   className="relative text-md font-medium text-zinc-900 dark:text-white hover:text-[var(--color-accent)] transition-all group"
                 >
                   {link.name}
-                  <motion.span 
+                  <motion.span
                     className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[var(--color-accent)] transition-all group-hover:w-full"
                     layoutId={`nav-underline-${link.name}`}
                   />
@@ -98,7 +98,7 @@ export default function Navbar() {
               onClick={() => setIsOpen(false)}
               className="fixed inset-0 bg-black/40 backdrop-blur-[2px] z-40 md:hidden"
             />
-            
+
             {/* Sidebar */}
             <motion.div
               initial={{ x: '100%' }}

@@ -13,7 +13,7 @@ export default function CustomCursor() {
 
   // Smooth springs for the trail effect
   const springConfig = { damping: 25, stiffness: 250 };
-  
+
   const mainX = useSpring(cursorX, springConfig);
   const mainY = useSpring(cursorY, springConfig);
 
@@ -54,7 +54,7 @@ export default function CustomCursor() {
     };
 
     updateInteractiveListeners();
-    
+
     // Observer for dynamic content to re-scan for interactive elements
     const observer = new MutationObserver(updateInteractiveListeners);
     observer.observe(document.body, { childList: true, subtree: true });
@@ -72,40 +72,40 @@ export default function CustomCursor() {
       {/* Luminous Trail - Outer Blur */}
       <motion.div
         style={{ x: trail3X, y: trail3Y }}
-        className="absolute w-12 h-12 -left-6 -top-6 rounded-full bg-accent/20 blur-3xl"
+        className="absolute w-8 h-8 -left-4 -top-4 rounded-xl bg-accent/20 blur-2xl"
       />
-      
+
       {/* Luminous Trail - Inner Blur */}
       <motion.div
         style={{ x: trail2X, y: trail2Y }}
-        className="absolute w-8 h-8 -left-4 -top-4 rounded-full bg-accent/10 blur-2xl"
+        className="absolute w-6 h-6 -left-3 -top-3 rounded-lg bg-accent/10 blur-xl"
       />
-      
+
       {/* Main Glow Base */}
       <motion.div
         style={{ x: mainX, y: mainY }}
         animate={{
-          scale: isHovering ? 2 : 1,
+          scale: isHovering ? 1.5 : 1,
           backgroundColor: isHovering ? 'var(--color-accent)' : 'var(--color-accent)',
           opacity: isHovering ? 0.4 : 0.1,
         }}
-        className="absolute w-16 h-16 -left-8 -top-8 rounded-full blur-[40px] transition-all duration-300"
+        className="absolute w-10 h-10 -left-5 -top-5 rounded-2xl blur-[20px] transition-all duration-300"
       />
 
-       {/* Core Point Glow */}
-       <motion.div
+      {/* Core Point Glow */}
+      <motion.div
         style={{ x: mainX, y: mainY }}
         animate={{
           scale: isHovering ? 1.5 : 1,
           opacity: isHovering ? 1 : 0.8,
         }}
-        className="absolute w-4 h-4 -left-2 -top-2 rounded-full bg-accent blur-sm opacity-80"
+        className="absolute w-2.5 h-2.5 -left-[5px] -top-[5px] rounded-md bg-accent blur-[2px] opacity-80"
       />
 
-       {/* Precision Dot */}
-       <motion.div
+      {/* Precision Dot */}
+      <motion.div
         style={{ x: mainX, y: mainY }}
-        className="absolute w-1.5 h-1.5 -left-[3px] -top-[3px] rounded-full bg-white shadow-[0_0_10px_#fff] z-10"
+        className="absolute w-1.5 h-1.5 -left-[3px] -top-[3px] rounded-sm bg-white shadow-[0_0_8px_#fff] z-10"
       />
     </div>
   );

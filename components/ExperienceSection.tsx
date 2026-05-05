@@ -73,8 +73,8 @@ const ExperienceEntry = ({
           </span>
           <span
             className={`text-xs px-3 py-1 rounded-full border flex items-center gap-1.5 font-medium
-              ${isCurrent 
-                ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20' 
+              ${isCurrent
+                ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20'
                 : 'bg-zinc-800 text-[var(--color-text-secondary)] dark:text-zinc-400 border-zinc-700'}`}
           >
             {isCurrent && (
@@ -143,7 +143,7 @@ const ExperienceEntry = ({
 export default function ExperienceSection() {
   const experiences = [
     {
-      role: 'Python Trainer',
+      role: 'Python Instructor',
       company: 'NAVTTC',
       companyFull: '(National Vocational and Technical Training Commission)',
       startDate: 'Feb 2026',
@@ -153,7 +153,7 @@ export default function ExperienceSection() {
       location: 'Hyderabad, Pakistan',
       isCurrent: true,
       bullets: [
-        'Currently training students in Python fundamentals and programming concepts as an official trainer at NAVTTC.',
+        'Currently training students in Python fundamentals and programming concepts as an official instructor at NAVTTC.',
         'Designing and delivering structured lesson plans to help beginners build a strong foundation in Python.',
       ],
       tags: ['Python', 'Teaching', 'Training'],
@@ -201,61 +201,61 @@ export default function ExperienceSection() {
 
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         <div className="max-w-3xl mx-auto">
-        {/* Section Label & Heading */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6 }}
-          className="text-center"
-        >
-          <div className="flex justify-center items-center gap-4 mb-6">
-            <div className="w-8 h-[1px] bg-[var(--color-accent)] opacity-50"></div>
-            <span className="text-xs tracking-widest text-[var(--color-accent)] uppercase font-bold">
-              EXPERIENCE
-            </span>
-            <div className="w-8 h-[1px] bg-[var(--color-accent)] opacity-50"></div>
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-[var(--color-text-primary)] dark:text-white mb-4">
-            Where I&apos;ve Worked
-          </h2>
-        </motion.div>
-
-        {/* Timeline Container */}
-        <div className="mt-16 relative">
-          {/* Vertical Timeline Line */}
+          {/* Section Label & Heading */}
           <motion.div
-            initial={{ scaleY: 0 }}
-            whileInView={{ scaleY: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.5, ease: 'easeOut' }}
-            className="absolute left-5 top-2 bottom-0 w-[2px] bg-gradient-to-b from-cyan-500 to-zinc-700 origin-top hidden sm:block"
-          />
-
-          {/* Timeline Entries */}
-          <motion.div 
-            className="flex flex-col gap-10"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-            variants={{
-              visible: {
-                transition: {
-                  staggerChildren: 0.2
-                }
-              }
-            }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6 }}
+            className="text-center"
           >
-            {experiences.map((exp, index) => (
-              <ExperienceEntry
-                key={index}
-                {...exp}
-                isLast={index === experiences.length - 1}
-                // delay removed as staggerChildren handles it
-              />
-            ))}
+            <div className="flex justify-center items-center gap-4 mb-6">
+              <div className="w-8 h-[1px] bg-[var(--color-accent)] opacity-50"></div>
+              <span className="text-xs tracking-widest text-[var(--color-accent)] uppercase font-bold">
+                EXPERIENCE
+              </span>
+              <div className="w-8 h-[1px] bg-[var(--color-accent)] opacity-50"></div>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-[var(--color-text-primary)] dark:text-white mb-4">
+              Where I&apos;ve Worked
+            </h2>
           </motion.div>
-        </div>
+
+          {/* Timeline Container */}
+          <div className="mt-16 relative">
+            {/* Vertical Timeline Line */}
+            <motion.div
+              initial={{ scaleY: 0 }}
+              whileInView={{ scaleY: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.5, ease: 'easeOut' }}
+              className="absolute left-5 top-2 bottom-0 w-[2px] bg-gradient-to-b from-cyan-500 to-zinc-700 origin-top hidden sm:block"
+            />
+
+            {/* Timeline Entries */}
+            <motion.div
+              className="flex flex-col gap-10"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.1 }}
+              variants={{
+                visible: {
+                  transition: {
+                    staggerChildren: 0.2
+                  }
+                }
+              }}
+            >
+              {experiences.map((exp, index) => (
+                <ExperienceEntry
+                  key={index}
+                  {...exp}
+                  isLast={index === experiences.length - 1}
+                // delay removed as staggerChildren handles it
+                />
+              ))}
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>
