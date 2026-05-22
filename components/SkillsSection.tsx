@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 
 import {
-  SiNextdotjs, SiReact, SiTailwindcss, SiJavascript, SiTypescript,
+  SiNextdotjs,SiNodedotjs , SiReact, SiTailwindcss, SiJavascript, SiTypescript,
   SiPython, SiFastapi, SiPhp, SiMysql, SiAnthropic, SiOpenai, SiGit
 } from 'react-icons/si';
 import { VscVscode } from 'react-icons/vsc';
@@ -12,6 +12,7 @@ import { HiOutlineDatabase } from 'react-icons/hi';
 
 const skills = [
   { name: 'Next.js', category: 'Framework', percentage: 80, color: 'var(--color-text-primary)', icon: <SiNextdotjs /> },
+   { name: 'Node.js', category: 'Framework', percentage: 75, color: 'green', icon: <SiNodedotjs /> },
   { name: 'React', category: 'Framework', percentage: 80, color: '#61dafb', icon: <SiReact /> },
   { name: 'Tailwind CSS', category: 'Styling', percentage: 85, color: '#38bdf8', icon: <SiTailwindcss /> },
   { name: 'JavaScript', category: 'Language', percentage: 80, color: '#f7df1e', icon: <SiJavascript /> },

@@ -262,21 +262,7 @@ export default function Home() {
                   </div>
                 </motion.div>
 
-                <motion.div
-                  animate={{ scale: [1, 1.1, 1] }}
-                  transition={{ duration: 4, repeat: Infinity }}
-                  className="absolute -bottom-6 -left-4 bg-zinc-950 border border-zinc-800 text-white px-6 py-4 rounded-2xl shadow-2xl flex items-center gap-4 z-40"
-                  style={{ transform: "translateZ(80px)" }}
-                >
-                  <div className="relative">
-                    {/* <div className="w-3 h-3 bg-emerald-500 rounded-full animate-ping absolute inset-0" /> */}
-                    <div className="w-3 h-3 bg-emerald-500 rounded-full relative" />
-                  </div>
-                  <div>
-                    <div className="font-bold text-sm tracking-tight">Open to Work</div>
-                    <div className="text-[10px] text-zinc-500 uppercase tracking-widest font-medium">Available Now</div>
-                  </div>
-                </motion.div>
+               
               </motion.div>
             </motion.div>
           </div>

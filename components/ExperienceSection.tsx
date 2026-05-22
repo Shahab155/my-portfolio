@@ -10,7 +10,7 @@ interface ExperienceEntryProps {
   startDate: string;
   endDate: string;
   durationBadge: string;
-  typeBadge: string;
+  typeBadge?: string;
   location: string;
   bullets: string[];
   tags: string[];
@@ -71,7 +71,7 @@ const ExperienceEntry = ({
           <span className="text-xs px-3 py-1 rounded-full bg-[var(--color-accent)]/10 text-[var(--color-accent)] border border-[var(--color-accent)]/20 font-medium">
             {durationBadge}
           </span>
-          <span
+          {/* <span
             className={`text-xs px-3 py-1 rounded-full border flex items-center gap-1.5 font-medium
               ${isCurrent
                 ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20'
@@ -81,7 +81,7 @@ const ExperienceEntry = ({
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
             )}
             {typeBadge}
-          </span>
+          </span> */}
         </div>
       </div>
 
@@ -142,30 +142,15 @@ const ExperienceEntry = ({
 
 export default function ExperienceSection() {
   const experiences = [
-    {
-      role: 'Python Instructor',
-      company: 'NAVTTC',
-      companyFull: '(National Vocational and Technical Training Commission)',
-      startDate: 'Feb 2026',
-      endDate: 'Present',
-      durationBadge: '2+ Months',
-      typeBadge: 'Currently Working',
-      location: 'Hyderabad, Pakistan',
-      isCurrent: true,
-      bullets: [
-        'Currently training students in Python fundamentals and programming concepts as an official instructor at NAVTTC.',
-        'Designing and delivering structured lesson plans to help beginners build a strong foundation in Python.',
-      ],
-      tags: ['Python', 'Teaching', 'Training'],
-    },
-    {
-      role: 'Junior Web Developer',
+    
+     {
+      role: 'Full Stack Developer',
       company: 'IRIS Software Solutions',
       startDate: 'August 2025',
-      endDate: 'January 2026',
-      durationBadge: '6 Months',
-      typeBadge: 'Employment',
+      endDate: 'Present',
+      durationBadge: '9+ Months',
       location: 'Hyderabad, Pakistan',
+      isCurrent: true,
       bullets: [
         'Worked as a Full Stack Developer on real client-facing projects delivering complete web solutions from frontend to backend.',
         'Built and maintained web applications using Next.js and Tailwind CSS for modern responsive frontends.',
@@ -173,6 +158,22 @@ export default function ExperienceSection() {
       ],
       tags: ['Next.js', 'Tailwind CSS', 'PHP', 'MySQL', 'XAMPP'],
     },
+    
+    {
+      role: 'Python Instructor',
+      company: 'NAVTTC',
+      companyFull: '(National Vocational and Technical Training Commission)',
+      startDate: 'Feb 2026',
+      endDate: 'May 2026',
+      durationBadge: '3 Months',
+      location: 'Hyderabad, Pakistan',
+      bullets: [
+        'Currently training students in Python fundamentals and programming concepts as an official instructor at NAVTTC.',
+        'Designing and delivering structured lesson plans to help beginners build a strong foundation in Python.',
+      ],
+      tags: ['Python', 'Teaching', 'Training'],
+    },
+   
     {
       role: 'Web Developer Intern',
       company: 'IRIS Software Solutions',
