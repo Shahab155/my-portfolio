@@ -83,7 +83,7 @@ export default function Home() {
                 I am a{' '}
                 <span className="relative inline-block">
                   <span className="relative z-10 text-[var(--color-text-primary)] font-semibold">
-                    Full Stack Developer
+                    Full Stack & AI Agents Developer
                   </span>
                   <motion.svg
                     viewBox="0 0 200 12"
@@ -101,8 +101,7 @@ export default function Home() {
                     />
                   </motion.svg>
                 </span>{' '}
-                building modern, scalable web applications
-                with clean, maintainable code and exceptional user experiences.
+                I build web applications and AI-powered agents using Next.js, FastAPI, and the OpenAI Agents SDK
               </p>
 
               {/* CTA Buttons */}

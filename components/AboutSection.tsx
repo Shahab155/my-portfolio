@@ -56,15 +56,13 @@ export default function AboutSection() {
               variants={fadeUpVariant}
               className="text-base font-light text-zinc-700 dark:text-zinc-400 leading-relaxed tracking-wide"
             >
-              I am Shahab Ud Din, a Full Stack Developer from Pakistan. I have been working on building web applications since 2024.
+              I specialize in building production-ready full stack applications and AI-powered tools. I've shipped real client projects at IRIS Software Solutions, built a government web platform used by Pakistan's Fishermen's Co-operative Society, and developed AI agents using OpenAI Agents SDK. 
             </motion.p>
             <motion.p
               variants={fadeUpVariant}
               className="text-base font-light text-zinc-700 dark:text-zinc-400 leading-relaxed tracking-wide"
             >
-              Beyond web development, I am currently exploring
-              Agentic AI building autonomous systems using
-              OpenAI Agents SDK and experimenting with Claude Code.
+              I'm currently deepening my expertise in agentic AI architecture.
             </motion.p>
           </div>
 
