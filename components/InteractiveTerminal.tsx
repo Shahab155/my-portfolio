@@ -354,7 +354,6 @@ export default function InteractiveTerminal() {
                   onKeyDown={handleKeyDown}
                   placeholder="Type a command..."
                   className="flex-1 bg-transparent outline-none text-zinc-300 placeholder-zinc-700"
-                  autoFocus
                 />
               </div>
             </div>

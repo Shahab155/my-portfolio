@@ -125,8 +125,8 @@ export default function Home() {
               className="relative w-full h-[500px] lg:h-[600px]"
             >
               <Image
-                src="/shahab.png"
-                alt="Shahab Ud Din - Full Stack & AI Agents Developer"
+                src="/hero.png"
+                alt="Shahab Ud Din - Full Stack & AI Developer"
                 fill
                 className="object-cover rounded-3xl shadow-2xl"
                 priority
