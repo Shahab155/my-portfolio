@@ -24,97 +24,94 @@ const ExperienceEntry = ({
   const isLeft = position === 'left';
 
   return (
-    <div className="relative flex items-center justify-center md:mb-0 mb-12">
-      {/* Left Card */}
-      {isLeft && (
-        <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="w-full md:w-5/12 md:pr-12 pl-8 md:pl-0"
-        >
-          <div className="border border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/40 backdrop-blur-sm p-8 rounded-lg hover:border-[var(--color-accent)]/50 transition-all duration-300">
-            <p className="text-[var(--color-accent)] text-sm font-medium tracking-wider mb-4">
-              {dateRange}
-            </p>
-            <h3 className="text-[var(--color-text-primary)] dark:text-white text-2xl font-bold uppercase mb-2 tracking-wide">
-              {company}
-            </h3>
-            <p className="text-[var(--color-text-secondary)] dark:text-zinc-500 text-sm uppercase tracking-wider mb-4">
-              {role}
-            </p>
-            <p className="text-zinc-700 dark:text-zinc-400 leading-relaxed mb-6">
-              {description}
-            </p>
-            <div className="flex flex-wrap gap-3">
-              {tags.map((tag, idx) => (
-                <span
-                  key={idx}
-                  className="px-3 py-1 bg-zinc-900 border border-zinc-800 text-white dark:bg-zinc-900 dark:border-zinc-800 dark:text-white text-xs font-medium uppercase tracking-wider rounded"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
-        </motion.div>
-      )}
+    <div className="relative mb-0">
+      <div className="flex items-start">
+        {/* Left side */}
+        <div className="flex-1 pr-8">
+          {isLeft && (
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="border border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/40 backdrop-blur-sm p-8 rounded-lg hover:border-[var(--color-accent)]/50 transition-all duration-300">
+                <p className="text-[var(--color-accent)] text-sm font-medium tracking-wider mb-4">
+                  {dateRange}
+                </p>
+                <h3 className="text-[var(--color-text-primary)] dark:text-white text-2xl font-bold uppercase mb-2 tracking-wide">
+                  {company}
+                </h3>
+                <p className="text-[var(--color-text-secondary)] dark:text-zinc-500 text-sm uppercase tracking-wider mb-4">
+                  {role}
+                </p>
+                <p className="text-zinc-700 dark:text-zinc-400 leading-relaxed mb-6">
+                  {description}
+                </p>
+                <div className="flex flex-wrap gap-3">
+                  {tags.map((tag, idx) => (
+                    <span
+                      key={idx}
+                      className="px-3 py-1 bg-zinc-900 border border-zinc-800 text-white dark:bg-zinc-900 dark:border-zinc-800 dark:text-white text-xs font-medium uppercase tracking-wider rounded"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </div>
 
-      {/* Timeline */}
-      <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 flex flex-col items-center">
-        {/* Dot */}
-        <motion.div
-          initial={{ scale: 0 }}
-          whileInView={{ scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: 0.2 }}
-          className="w-4 h-4 rounded-full bg-[var(--color-accent)] border-4 border-[var(--color-bg)] z-10"
-        />
-        {/* Line */}
-        {!isLast && (
-          <div className="w-0.5 h-32 md:h-32 h-12 bg-[var(--color-accent)] mt-4" />
-        )}
+        {/* Timeline Dot */}
+        <div className="relative flex flex-col items-center justify-start pt-6" style={{ width: '2px' }}>
+          <motion.div
+            initial={{ scale: 0, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            viewport={{ once: false, amount: 0.5 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="w-4 h-4 rounded-full bg-[var(--color-accent)] border-4 border-[var(--color-bg)] z-10"
+            style={{ marginLeft: '-7px' }}
+          />
+        </div>
+
+        {/* Right side */}
+        <div className="flex-1 pl-8">
+          {!isLeft && (
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="border border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/40 backdrop-blur-sm p-8 rounded-lg hover:border-[var(--color-accent)]/50 transition-all duration-300">
+                <p className="text-[var(--color-accent)] text-sm font-medium tracking-wider mb-4">
+                  {dateRange}
+                </p>
+                <h3 className="text-[var(--color-text-primary)] dark:text-white text-2xl font-bold uppercase mb-2 tracking-wide">
+                  {company}
+                </h3>
+                <p className="text-[var(--color-text-secondary)] dark:text-zinc-500 text-sm uppercase tracking-wider mb-4">
+                  {role}
+                </p>
+                <p className="text-zinc-700 dark:text-zinc-400 leading-relaxed mb-6">
+                  {description}
+                </p>
+                <div className="flex flex-wrap gap-3">
+                  {tags.map((tag, idx) => (
+                    <span
+                      key={idx}
+                      className="px-3 py-1 bg-zinc-900 border border-zinc-800 text-white dark:bg-zinc-900 dark:border-zinc-800 dark:text-white text-xs font-medium uppercase tracking-wider rounded"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </div>
       </div>
-
-      {/* Right Card */}
-      {!isLeft && (
-        <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="w-full md:w-5/12 md:pl-12 pl-8 md:pl-12"
-        >
-          <div className="border border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/40 backdrop-blur-sm p-8 rounded-lg hover:border-[var(--color-accent)]/50 transition-all duration-300">
-            <p className="text-[var(--color-accent)] text-sm font-medium tracking-wider mb-4">
-              {dateRange}
-            </p>
-            <h3 className="text-[var(--color-text-primary)] dark:text-white text-2xl font-bold uppercase mb-2 tracking-wide">
-              {company}
-            </h3>
-            <p className="text-[var(--color-text-secondary)] dark:text-zinc-500 text-sm uppercase tracking-wider mb-4">
-              {role}
-            </p>
-            <p className="text-zinc-700 dark:text-zinc-400 leading-relaxed mb-6">
-              {description}
-            </p>
-            <div className="flex flex-wrap gap-3">
-              {tags.map((tag, idx) => (
-                <span
-                  key={idx}
-                  className="px-3 py-1 bg-zinc-900 border border-zinc-800 text-white dark:bg-zinc-900 dark:border-zinc-800 dark:text-white text-xs font-medium uppercase tracking-wider rounded"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
-        </motion.div>
-      )}
-
-      {/* Spacer for opposite side */}
-      {isLeft ? <div className="hidden md:block md:w-5/12" /> : <div className="hidden md:block md:w-5/12" />}
     </div>
   );
 };
@@ -178,8 +175,11 @@ export default function ExperienceSectionNew() {
 
         {/* Timeline Container */}
         <div className="relative">
+          {/* Continuous Vertical Line - Behind all content */}
+          <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-[var(--color-accent)] transform -translate-x-1/2" />
+
           {/* Experience Entries */}
-          <div className="space-y-0">
+          <div className="flex flex-col">
             {experiences.map((exp, index) => (
               <ExperienceEntry
                 key={index}

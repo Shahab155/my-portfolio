@@ -1,7 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { useEffect, useRef, useState } from 'react';
+import { motion, useAnimation } from 'framer-motion';
+import { useState, useRef, useEffect } from 'react';
 
 import {
   SiNextdotjs,SiNodedotjs , SiReact, SiTailwindcss, SiJavascript, SiTypescript,
@@ -87,88 +87,53 @@ export default function SkillsSection() {
     visible: { opacity: 1, y: 0 },
   };
 
+  const [isHovering, setIsHovering] = useState(false);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const [isInteracting, setIsInteracting] = useState(false);
-  const [isDragging, setIsDragging] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const controls = useAnimation();
+
+  const duration = skills.length * 3;
 
   useEffect(() => {
-    const container = scrollContainerRef.current;
-    if (!container) return;
+    const startAnimation = () => {
+      if (!trackRef.current) return;
 
-    // Initialize scroll position to the middle to allow immediate leftward movement (Left -> Right visual)
-    const setInitialScroll = () => {
-      container.scrollLeft = container.scrollWidth / 2;
-    };
+      // Get the first set of skills to calculate width
+      const firstSet = trackRef.current.firstElementChild as HTMLElement;
+      if (!firstSet) return;
 
-    // Small delay to ensure layout is calculated
-    const timeoutId = setTimeout(setInitialScroll, 100);
+      const setWidth = firstSet.offsetWidth;
+      const gap = parseFloat(window.getComputedStyle(trackRef.current).gap) || 0;
+      const totalWidth = setWidth + gap;
 
-    let animationFrameId: number;
-    let lastTime = performance.now();
-    const speed = 0.05; // pixels per millisecond
-
-    const autoScroll = (currentTime: number) => {
-      const deltaTime = currentTime - lastTime;
-      lastTime = currentTime;
-
-      // Only auto-scroll if not interacting (hovering or dragging)
-      if (!isInteracting && !isDragging) {
-        // Decrease scrollLeft to move items visually from Left to Right
-        container.scrollLeft -= speed * deltaTime;
-
-        // If we reach the start, jump back to the middle for a seamless loop
-        if (container.scrollLeft <= 0) {
-          container.scrollLeft = container.scrollWidth / 2;
-        }
-      }
-      animationFrameId = requestAnimationFrame(autoScroll);
-    };
-
-    animationFrameId = requestAnimationFrame(autoScroll);
-
-    // Global mouse up handler to stop dragging even if mouse leaves the container
-    const handleGlobalMouseUp = () => {
-      if (isDragging) {
-        setIsDragging(false);
+      if (totalWidth > 0 && !isHovering) {
+        controls.start({
+          x: [0, -totalWidth],
+          transition: {
+            duration: duration,
+            repeat: Infinity,
+            repeatType: "loop",
+            ease: "linear",
+          },
+        });
+      } else {
+        controls.stop();
       }
     };
 
-    window.addEventListener('mouseup', handleGlobalMouseUp);
+    // Initial start
+    const timer = setTimeout(startAnimation, 100);
+
+    // Restart on resize
+    window.addEventListener('resize', startAnimation);
 
     return () => {
-      cancelAnimationFrame(animationFrameId);
-      clearTimeout(timeoutId);
-      window.removeEventListener('mouseup', handleGlobalMouseUp);
+      clearTimeout(timer);
+      window.removeEventListener('resize', startAnimation);
     };
-  }, [isInteracting, isDragging]);
+  }, [isHovering, controls, duration]);
 
-  const handleMouseDown = (e: React.MouseEvent) => {
-    if (!scrollContainerRef.current) return;
-    setIsDragging(true);
-    setIsInteracting(true);
-    setStartX(e.pageX - scrollContainerRef.current.offsetLeft);
-    setScrollLeft(scrollContainerRef.current.scrollLeft);
-    e.preventDefault();
-  };
 
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging || !scrollContainerRef.current) return;
-    e.preventDefault();
-    const x = e.pageX - scrollContainerRef.current.offsetLeft;
-    const walk = (x - startX) * 2; // Scroll speed multiplier
-    scrollContainerRef.current.scrollLeft = scrollLeft - walk;
-  };
-
-  const handleMouseUp = () => {
-    setIsDragging(false);
-  };
-
-  const handleMouseLeave = () => {
-    setIsDragging(false);
-    setIsInteracting(false);
-  };
 
   return (
     <section id="skills" className="py-24 bg-[var(--color-bg)] w-full overflow-hidden relative transition-colors duration-300 border-b border-zinc-200 dark:border-zinc-800">
@@ -201,43 +166,48 @@ export default function SkillsSection() {
         </motion.div>
 
         {/* Skills Slider */}
-        <div className="relative w-full group py-4">
+        <div className="relative w-full overflow-hidden py-4">
           {/* Gradient Masks for fading edges */}
           <div className="absolute left-0 top-0 bottom-0 w-12 md:w-24 bg-gradient-to-r from-[var(--color-bg)] to-transparent z-10 pointer-events-none" />
           <div className="absolute right-0 top-0 bottom-0 w-12 md:w-24 bg-gradient-to-l from-[var(--color-bg)] to-transparent z-10 pointer-events-none" />
 
-          {/* Scrollable Track */}
+          {/* Animated Track - Single continuous animation */}
           <div
             ref={scrollContainerRef}
-            onMouseEnter={() => setIsInteracting(true)}
-            onMouseLeave={handleMouseLeave}
-            onMouseDown={handleMouseDown}
-            onMouseMove={handleMouseMove}
-            onMouseUp={handleMouseUp}
-            onTouchStart={() => setIsInteracting(true)}
-            onTouchEnd={() => setIsInteracting(false)}
-            className="flex gap-4 md:gap-8 overflow-x-auto px-12 md:px-24 hide-scrollbar cursor-grab active:cursor-grabbing select-none"
-            style={{ userSelect: 'none' }}
+            className="overflow-hidden"
+            onMouseEnter={() => setIsHovering(true)}
+            onMouseLeave={() => setIsHovering(false)}
           >
-            {[...skills, ...skills].map((skill, index) => (
-              <div
-                key={`${skill.name}-${index}`}
-                className="flex flex-col items-center w-40 md:w-48 lg:w-56 shrink-0"
-              >
-                <CircularProgress
-                  percentage={skill.percentage}
-                  color={skill.color}
-                  iconItem={skill.icon}
-                />
+            <motion.div
+              ref={trackRef}
+              className="flex gap-4 md:gap-8"
+              animate={controls}
+            >
+              {/* Render 3 sets for seamless infinite scroll */}
+              {[...Array(3)].map((_, setIndex) => (
+                <div key={setIndex} className="flex gap-4 md:gap-8 shrink-0">
+                  {skills.map((skill, index) => (
+                    <div
+                      key={`${skill.name}-${setIndex}-${index}`}
+                      className="flex flex-col items-center w-40 md:w-48 lg:w-56 shrink-0"
+                    >
+                      <CircularProgress
+                        percentage={skill.percentage}
+                        color={skill.color}
+                        iconItem={skill.icon}
+                      />
 
-                <h3 className="font-bold text-[var(--color-text-primary)] dark:text-white text-lg md:text-xl text-center mb-1 drop-shadow-sm">
-                  {skill.name}
-                </h3>
-                <p className="text-[var(--color-text-secondary)] dark:text-zinc-500 text-xs md:text-sm text-center">
-                  {skill.category}
-                </p>
-              </div>
-            ))}
+                      <h3 className="font-bold text-[var(--color-text-primary)] dark:text-white text-lg md:text-xl text-center mb-1 drop-shadow-sm">
+                        {skill.name}
+                      </h3>
+                      <p className="text-[var(--color-text-secondary)] dark:text-zinc-500 text-xs md:text-sm text-center">
+                        {skill.category}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </motion.div>
           </div>
         </div>
 
