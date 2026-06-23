@@ -7,7 +7,7 @@ export default function Footer() {
   
   return (
     <footer className="w-full bg-[var(--color-bg)] py-12 px-6 border-t border-zinc-200 dark:border-zinc-800 transition-colors duration-300">
-      <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 text-sm">
+      <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 text-sm">
         <motion.p 
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}

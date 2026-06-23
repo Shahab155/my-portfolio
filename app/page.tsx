@@ -1,18 +1,18 @@
 'use client';
 
 import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { useEffect, useState, useRef } from 'react';
-import { useMotionValue, useSpring, useTransform } from 'framer-motion';
-import AboutSection from '@/components/AboutSection';
+import { motion, useReducedMotion } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import InteractiveTerminal from '@/components/InteractiveTerminal';
 import ContactSection from '@/components/ContactSection';
-import ExperienceSection from '@/components/ExperienceSection';
+import ExperienceSection from '@/components/ExperienceSectionNew';
 import Footer from '@/components/Footer';
 import ProjectsSection from '@/components/ProjectsSection';
 import SkillsSection from '@/components/SkillsSection';
 
 export default function Home() {
   const [isVisible, setIsVisible] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
     setIsVisible(true);
@@ -26,34 +26,9 @@ export default function Home() {
     });
   };
 
-  // 3D Tilt Effect Logic
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const springConfig = { damping: 20, stiffness: 150 };
-  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [15, -15]), springConfig);
-  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-15, 15]), springConfig);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const width = rect.width;
-    const height = rect.height;
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const xPct = x / width - 0.5;
-    const yPct = y / height - 0.5;
-    mouseX.set(xPct);
-    mouseY.set(yPct);
-  };
-
-  const handleMouseLeave = () => {
-    mouseX.set(0);
-    mouseY.set(0);
-  };
-
   return (
     <main>
-      <section className="relative min-h-screen bg-[var(--color-bg)] overflow-x-hidden flex items-center py-10 border-b border-zinc-200 dark:border-zinc-800">
+      <section id="home" className="relative min-h-screen bg-[var(--color-bg)] overflow-x-hidden flex items-center py-10 border-b border-zinc-200 dark:border-zinc-800">
         {/* Subtle dot grid background */}
         <div className="absolute inset-0 bg-[radial-gradient(#334155_0.8px,transparent_1px)] dark:bg-[radial-gradient(#475569_0.8px,transparent_1px)] bg-[length:20px_20px] opacity-40" />
 
@@ -88,9 +63,9 @@ export default function Home() {
                   <motion.svg
                     viewBox="0 0 200 12"
                     className="absolute -bottom-1 left-0 w-full h-3 text-[var(--color-accent)] opacity-70"
-                    initial={{ pathLength: 0, opacity: 0 }}
+                    initial={shouldReduceMotion ? { opacity: 0.7 } : { pathLength: 0, opacity: 0 }}
                     animate={{ pathLength: 1, opacity: 0.7 }}
-                    transition={{ duration: 1, delay: 1, ease: "easeOut" }}
+                    transition={shouldReduceMotion ? { duration: 0 } : { duration: 1, delay: 1, ease: "easeOut" }}
                   >
                     <motion.path
                       d="M2 10 C 40 2, 160 2, 198 10"
@@ -109,7 +84,7 @@ export default function Home() {
                 <motion.button
                   suppressHydrationWarning
                   onClick={scrollToProjects}
-                  className="px-10 py-4 bg-[var(--color-accent)] hover:bg-cyan-400 transition-all text-black font-semibold text-md rounded-full flex items-center gap-3 shadow-lg shadow-cyan-500/30"
+                  className="px-10 py-4 bg-[var(--color-accent)] hover:bg-cyan-400 transition-all text-black font-semibold text-md rounded-full flex items-center gap-3 shadow-lg shadow-cyan-500/30 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-[var(--color-bg)]"
                 >
                   View my Work
                   <span className="text-xl">→</span>
@@ -118,7 +93,7 @@ export default function Home() {
                 <motion.a
                   href="/shahab.pdf"
                   download="Shahab_Resume.pdf"
-                  className="px-10 py-4 bg-transparent border-2 border-[var(--color-accent)] text-[var(--color-accent)] hover:bg-[var(--color-accent)] hover:text-black transition-all font-semibold text-md rounded-full flex items-center gap-3 group hover:shadow-[0_0_20px_var(--color-accent)]"
+                  className="px-10 py-4 bg-transparent border-2 border-[var(--color-accent)] text-[var(--color-accent)] hover:bg-[var(--color-accent)] hover:text-black transition-all font-semibold text-md rounded-full flex items-center gap-3 group hover:shadow-[0_0_20px_var(--color-accent)] focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-[var(--color-bg)]"
                 >
                   Download Resume
                   <motion.svg
@@ -131,7 +106,7 @@ export default function Home() {
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    animate={{ y: [0, 2, 0] }}
+                    animate={shouldReduceMotion ? {} : { y: [0, 2, 0] }}
                     transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                   >
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
@@ -142,134 +117,27 @@ export default function Home() {
               </div>
             </motion.div>
 
-            {/* RIGHT COLUMN - 3D Card */}
+            {/* RIGHT COLUMN - Image */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: isVisible ? 1 : 0, scale: isVisible ? 1 : 0.9 }}
-              transition={{ duration: 1, ease: "easeOut" }}
-              className="perspective-[1000px] flex justify-center"
-              onMouseMove={handleMouseMove}
-              onMouseLeave={handleMouseLeave}
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : 40 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+              className="relative w-full h-[500px] lg:h-[600px]"
             >
-              <motion.div
-                style={{
-                  rotateX,
-                  rotateY,
-                  transformStyle: "preserve-3d"
-                }}
-                className="relative w-full max-w-[320px] lg:max-w-[360px]"
-              >
-                {/* Main Glass Card */}
-                <div className="relative aspect-[3/4.2] rounded-[3rem] bg-white/5 dark:bg-zinc-900/20 backdrop-blur-2xl border border-[var(--color-accent)]/30 dark:border-white/10 overflow-hidden shadow-2xl shadow-cyan-500/10 flex flex-col items-center justify-center group transition-all duration-500 will-change-transform">
-
-                  {/* Shimmer Effect */}
-                  <motion.div
-                    animate={{
-                      left: ["-100%", "200%"],
-                    }}
-                    transition={{
-                      duration: 3,
-                      repeat: Infinity,
-                      repeatDelay: 4,
-                      ease: "linear",
-                    }}
-                    className="absolute top-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 pointer-events-none"
-                  />
-
-                  {/* Laser Scan Effect */}
-                  <motion.div
-                    animate={{
-                      top: ["-10%", "110%"],
-                      opacity: [0, 1, 1, 0]
-                    }}
-                    transition={{
-                      duration: 4,
-                      repeat: Infinity,
-                      repeatDelay: 2,
-                      ease: "easeInOut",
-                    }}
-                    className="absolute left-0 right-0 h-px bg-cyan-400 shadow-[0_0_15px_#22d3ee] z-20 pointer-events-none"
-                  />
-
-                  {/* Animated Background Grid */}
-                  <div className="absolute inset-0 opacity-20 pointer-events-none">
-                    <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px]" />
-                    <motion.div
-                      animate={{
-                        opacity: [0.1, 0.3, 0.1]
-                      }}
-                      transition={{ duration: 4, repeat: Infinity }}
-                      className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(34,211,238,0.1),transparent_50%)]"
-                    />
-                  </div>
-
-                  {/* Centered Content */}
-                  <div className="relative z-10 flex flex-col items-center gap-8" style={{ transform: "translateZ(50px)" }}>
-                    <motion.div
-                      initial={{ scale: 0.9, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      transition={{ duration: 1, delay: 0.5 }}
-                      className="relative z-10 w-32 h-32 rounded-3xl bg-gradient-to-tr from-[var(--color-accent)]/20 to-cyan-500/10 border border-[var(--color-accent)]/20 flex items-center justify-center backdrop-blur-xl shadow-2xl"
-                    >
-                      <motion.span
-                        className="text-7xl drop-shadow-[0_0_15px_rgba(34,211,238,0.5)]"
-                        animate={{
-                          y: [0, -10, 0],
-                          rotate: [0, 5, -5, 0]
-                        }}
-                        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                      >
-                        👨‍💻
-                      </motion.span>
-                    </motion.div>
-                  </div>
-
-                  <div className="text-center space-y-2">
-                    <motion.div
-                      initial={{ width: 0 }}
-                      animate={{ width: "60%" }}
-                      transition={{ delay: 1, duration: 0.8 }}
-                      className="h-1 bg-gradient-to-r from-transparent via-cyan-500 to-transparent mx-auto mb-4"
-                    />
-
-                    <motion.p
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 1.2 }}
-                      className="text-cyan-400 text-sm tracking-[0.4em] uppercase font-medium"
-                    >
-                      Full Stack Developer
-                    </motion.p>
-                  </div>
-
-                  {/* Corner Accents */}
-                  <div className="absolute top-10 left-10 w-2 h-2 rounded-full bg-cyan-500 shadow-[0_0_10px_#22d3ee] animate-pulse" />
-                  <div className="absolute bottom-10 right-10 w-12 h-12 border-r-2 border-b-2 border-cyan-500/30 rounded-br-3xl" />
-                </div>
-
-
-                <motion.div
-                  animate={{ y: [0, 15, 0], rotate: -360 }}
-                  transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-                  className="absolute top-1/2 -right-4 w-12 h-12 bg-zinc-900/80 backdrop-blur-md rounded-xl border border-white/10 flex items-center justify-center shadow-xl z-30"
-                >
-                  <div className="w-5 h-5 flex flex-wrap gap-1">
-                    <div className="w-2 h-2 bg-purple-500 rounded-sm" />
-                    <div className="w-2 h-2 bg-cyan-500 rounded-sm" />
-                    <div className="w-2 h-2 bg-cyan-500 rounded-sm" />
-                    <div className="w-2 h-2 bg-purple-500 rounded-sm" />
-                  </div>
-                </motion.div>
-
-               
-              </motion.div>
+              <Image
+                src="/shahab.png"
+                alt="Shahab Ud Din - Full Stack & AI Agents Developer"
+                fill
+                className="object-cover rounded-3xl shadow-2xl"
+                priority
+              />
             </motion.div>
           </div>
         </div>
 
 
       </section>
-      <AboutSection />
+      <InteractiveTerminal />
       <ExperienceSection />
       <SkillsSection />
       <ProjectsSection />

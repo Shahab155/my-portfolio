@@ -17,6 +17,7 @@ const NavLinks = [
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('Home');
 
   useEffect(() => {
     // Add scroll event for visual feedback
@@ -24,6 +25,55 @@ export default function Navbar() {
       setScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    // Track active section based on scroll position
+    const handleScroll = () => {
+      const sections = NavLinks.map(link => {
+        const id = link.href === '/' ? 'home' : link.href.replace('#', '');
+        const element = document.getElementById(id);
+        return element ? { element, name: link.name } : null;
+      }).filter(Boolean) as { element: Element; name: string }[];
+
+      // Get the viewport height
+      const viewportHeight = window.innerHeight;
+      const scrollY = window.scrollY;
+
+      // Find which section is most visible
+      let activeSection = 'Home';
+      let maxVisibleArea = 0;
+
+      sections.forEach(({ element, name }) => {
+        const rect = element.getBoundingClientRect();
+        const elementTop = rect.top + scrollY;
+        const elementBottom = elementTop + rect.height;
+        const viewportTop = scrollY;
+        const viewportBottom = scrollY + viewportHeight;
+
+        // Calculate visible area of this section
+        const visibleTop = Math.max(elementTop, viewportTop);
+        const visibleBottom = Math.min(elementBottom, viewportBottom);
+        const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+
+        // Adjust for navbar offset (sections near the top get priority)
+        const adjustedVisibleHeight = rect.top < 200 && rect.top > -200 ? visibleHeight * 1.5 : visibleHeight;
+
+        if (adjustedVisibleHeight > maxVisibleArea) {
+          maxVisibleArea = adjustedVisibleHeight;
+          activeSection = name;
+        }
+      });
+
+      setActiveSection(activeSection);
+    };
+
+    // Initial check
+    handleScroll();
+
+    // Add scroll listener
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -36,7 +86,7 @@ export default function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ type: 'spring', stiffness: 100, damping: 20 }}
         className={`
-          w-full max-w-5xl px-0 py-4 flex justify-between items-center
+          w-full max-w-7xl px-0 py-4 flex justify-between items-center
           transition-all duration-500 rounded-3xl backdrop-blur-xl
           border-2
           ${scrolled
@@ -48,7 +98,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link
             href="/"
-            className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-[var(--color-primary)] dark:text-[var(--color-accent)] group"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-[var(--color-primary)] dark:text-[var(--color-accent)] group hover:opacity-80 transition-opacity focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 rounded-md px-2 py-1"
           >
             Shahab
           </Link>
@@ -57,26 +107,34 @@ export default function Navbar() {
           <div className="flex items-center gap-6">
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-8">
-              {NavLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className="relative text-md font-medium text-zinc-900 dark:text-white hover:text-[var(--color-accent)] transition-all group"
-                >
-                  {link.name}
-                  <motion.span
-                    className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[var(--color-accent)] transition-all group-hover:w-full"
-                    layoutId={`nav-underline-${link.name}`}
-                  />
-                </Link>
-              ))}
+              {NavLinks.map((link) => {
+                const isActive = activeSection === link.name;
+                return (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    className={`relative text-md font-medium transition-all group focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-background rounded-sm px-2 py-1 ${
+                      isActive
+                        ? 'text-[var(--color-accent)]'
+                        : 'text-zinc-900 dark:text-white hover:text-[var(--color-accent)]'
+                    }`}
+                  >
+                    {link.name}
+                    <span
+                      className={`absolute -bottom-1 left-0 h-[2px] bg-[var(--color-accent)] transition-all ${
+                        isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                      }`}
+                    />
+                  </Link>
+                );
+              })}
             </div>
 
             {/* Mobile Menu Button */}
             <div className="flex items-center gap-3">
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="md:hidden p-2.5 text-[var(--color-text-primary)] bg-surface/50 rounded-xl border border-[var(--color-accent)]/10 xl:active:scale-90"
+                className="md:hidden p-2.5 text-[var(--color-text-primary)] bg-surface/50 rounded-xl border border-[var(--color-accent)]/10 xl:active:scale-90 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2"
                 aria-label="Toggle Menu"
               >
                 {isOpen ? <HiX size={24} /> : <HiOutlineMenuAlt3 size={24} />}
@@ -121,23 +179,30 @@ export default function Navbar() {
                 </button>
               </div>
 
-              {NavLinks.map((link, idx) => (
-                <motion.div
-                  key={link.name}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.1 + idx * 0.05 }}
-                  className="w-full"
-                >
-                  <Link
-                    href={link.href}
-                    onClick={() => setIsOpen(false)}
-                    className="text-xl font-semibold text-zinc-900 dark:text-white hover:text-[var(--color-accent)] transition-colors block py-2"
+              {NavLinks.map((link, idx) => {
+                const isActive = activeSection === link.name;
+                return (
+                  <motion.div
+                    key={link.name}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.1 + idx * 0.05 }}
+                    className="w-full"
                   >
-                    {link.name}
-                  </Link>
-                </motion.div>
-              ))}
+                    <Link
+                      href={link.href}
+                      onClick={() => setIsOpen(false)}
+                      className={`text-xl font-semibold transition-colors block py-2 rounded-md px-3 focus:outline-none focus:ring-2 focus:ring-cyan-500 ${
+                        isActive
+                          ? 'text-[var(--color-accent)]'
+                          : 'text-zinc-900 dark:text-white hover:text-[var(--color-accent)]'
+                      }`}
+                    >
+                      {link.name}
+                    </Link>
+                  </motion.div>
+                );
+              })}
             </motion.div>
           </>
         )}

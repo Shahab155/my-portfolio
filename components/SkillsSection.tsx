@@ -128,29 +128,46 @@ export default function SkillsSection() {
 
     animationFrameId = requestAnimationFrame(autoScroll);
 
+    // Global mouse up handler to stop dragging even if mouse leaves the container
+    const handleGlobalMouseUp = () => {
+      if (isDragging) {
+        setIsDragging(false);
+      }
+    };
+
+    window.addEventListener('mouseup', handleGlobalMouseUp);
+
     return () => {
       cancelAnimationFrame(animationFrameId);
       clearTimeout(timeoutId);
+      window.removeEventListener('mouseup', handleGlobalMouseUp);
     };
   }, [isInteracting, isDragging]);
 
   const handleMouseDown = (e: React.MouseEvent) => {
     if (!scrollContainerRef.current) return;
     setIsDragging(true);
+    setIsInteracting(true);
     setStartX(e.pageX - scrollContainerRef.current.offsetLeft);
     setScrollLeft(scrollContainerRef.current.scrollLeft);
+    e.preventDefault();
   };
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!isDragging || !scrollContainerRef.current) return;
     e.preventDefault();
     const x = e.pageX - scrollContainerRef.current.offsetLeft;
-    const walk = (x - startX) * 1.5; // Scroll speed multiplier
+    const walk = (x - startX) * 2; // Scroll speed multiplier
     scrollContainerRef.current.scrollLeft = scrollLeft - walk;
   };
 
   const handleMouseUp = () => {
     setIsDragging(false);
+  };
+
+  const handleMouseLeave = () => {
+    setIsDragging(false);
+    setIsInteracting(false);
   };
 
   return (
@@ -193,16 +210,14 @@ export default function SkillsSection() {
           <div
             ref={scrollContainerRef}
             onMouseEnter={() => setIsInteracting(true)}
-            onMouseLeave={() => {
-              setIsInteracting(false);
-              setIsDragging(false);
-            }}
+            onMouseLeave={handleMouseLeave}
             onMouseDown={handleMouseDown}
             onMouseMove={handleMouseMove}
             onMouseUp={handleMouseUp}
             onTouchStart={() => setIsInteracting(true)}
             onTouchEnd={() => setIsInteracting(false)}
             className="flex gap-4 md:gap-8 overflow-x-auto px-12 md:px-24 hide-scrollbar cursor-grab active:cursor-grabbing select-none"
+            style={{ userSelect: 'none' }}
           >
             {[...skills, ...skills].map((skill, index) => (
               <div
@@ -218,26 +233,9 @@ export default function SkillsSection() {
                 <h3 className="font-bold text-[var(--color-text-primary)] dark:text-white text-lg md:text-xl text-center mb-1 drop-shadow-sm">
                   {skill.name}
                 </h3>
-                <p className="text-[var(--color-text-secondary)] dark:text-zinc-500 text-xs md:text-sm mb-4 text-center">
+                <p className="text-[var(--color-text-secondary)] dark:text-zinc-500 text-xs md:text-sm text-center">
                   {skill.category}
                 </p>
-
-                {/* Small horizontal progress component */}
-                <div className="flex items-center justify-center gap-3 w-28 mx-auto">
-                  <div className="flex-1 h-1.5 bg-zinc-200 dark:bg-zinc-800 rounded-full overflow-hidden relative">
-                    <motion.div
-                      className="absolute top-0 left-0 h-full rounded-full"
-                      style={{ backgroundColor: skill.color, boxShadow: `0 0 8px ${skill.color}` }}
-                      initial={{ width: 0 }}
-                      whileInView={{ width: `${skill.percentage}%` }}
-                      viewport={{ once: true, amount: 0.1 }}
-                      transition={{ duration: 1.5, ease: "easeOut" }}
-                    />
-                  </div>
-                  <span className="text-[var(--color-text-primary)] font-semibold text-xs md:text-sm min-w-[32px] text-right">
-                    {skill.percentage}%
-                  </span>
-                </div>
               </div>
             ))}
           </div>
