@@ -45,10 +45,10 @@ const ExperienceEntry = ({
 
           <div className="border border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/40 backdrop-blur-sm p-4 sm:p-6 rounded-lg hover:border-[var(--color-accent)]/50 transition-all duration-300">
             <p className="text-[var(--color-accent)] text-xs sm:text-sm font-medium tracking-wider mb-3">
-              {dateRange}
+              {/* {dateRange} */}
             </p>
             <h3 className="text-[var(--color-text-primary)] dark:text-white text-lg sm:text-xl font-bold uppercase mb-2 tracking-wide">
-              {company}
+              {/* {company} */}
             </h3>
             <p className="text-[var(--color-text-secondary)] dark:text-zinc-500 text-xs sm:text-sm uppercase tracking-wider mb-3">
               {role}
