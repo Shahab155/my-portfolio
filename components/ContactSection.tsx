@@ -28,8 +28,8 @@ const infoCards = [
   {
     icon: <HiOutlineMail className="w-5 h-5" />,
     title: 'Email',
-    subtitle: 'bhuttoshahab15@gmail.com',
-    href: 'mailto:bhuttoshahab15@gmail.com',
+    subtitle: 'shahab15.dev@gmail.com',
+    href: 'mailto:shahab15.dev@gmail.com',
     external: false,
   },
   {

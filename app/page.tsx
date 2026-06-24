@@ -58,7 +58,7 @@ export default function Home() {
                 I am a{' '}
                 <span className="relative inline-block">
                   <span className="relative z-10 text-[var(--color-text-primary)] font-semibold">
-                    Full Stack & AI Agents Developer
+                    Full Stack & AI Developer
                   </span>
                   <motion.svg
                     viewBox="0 0 200 12"
@@ -80,40 +80,16 @@ export default function Home() {
               </p>
 
               {/* CTA Buttons */}
-              <div className="flex flex-wrap gap-4 mt-8">
+              <div className="flex flex-wrap gap-4 mt-8 ">
                 <motion.button
                   suppressHydrationWarning
                   onClick={scrollToProjects}
-                  className="px-10 py-4 bg-[var(--color-accent)] hover:bg-cyan-400 transition-all text-black font-semibold text-md rounded-full flex items-center gap-3 shadow-lg shadow-cyan-500/30 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-[var(--color-bg)]"
+                  className="px-10 py-4 bg-[var(--color-accent)] hover:bg-cyan-400 transition-all text-black font-semibold text-md rounded-full flex items-center gap-3 shadow-lg shadow-cyan-500/30 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-[var(--color-bg)] cursor-pointer"
                 >
                   View my Work
                   <span className="text-xl">→</span>
                 </motion.button>
 
-                <motion.a
-                  href="/shahab.pdf"
-                  download="Shahab_Resume.pdf"
-                  className="px-10 py-4 bg-transparent border-2 border-[var(--color-accent)] text-[var(--color-accent)] hover:bg-[var(--color-accent)] hover:text-black transition-all font-semibold text-md rounded-full flex items-center gap-3 group hover:shadow-[0_0_20px_var(--color-accent)] focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-[var(--color-bg)]"
-                >
-                  Download Resume
-                  <motion.svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    animate={shouldReduceMotion ? {} : { y: [0, 2, 0] }}
-                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                  >
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                    <polyline points="7 10 12 15 17 10" />
-                    <line x1="12" y1="15" x2="12" y2="3" />
-                  </motion.svg>
-                </motion.a>
               </div>
             </motion.div>
 
