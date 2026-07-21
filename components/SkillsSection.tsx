@@ -42,7 +42,7 @@ const CircularProgress = ({ percentage, color, iconItem }: { percentage: number,
     >
       {/* Background Glow */}
       <div
-        className="absolute inset-0 rounded-full blur-2xl opacity-5 dark:opacity-20 group-hover:opacity-10 dark:group-hover:opacity-40 transition-opacity duration-500"
+        className="absolute inset-0 rounded-full blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-500"
         style={{ backgroundColor: color }}
       />
 
@@ -50,12 +50,12 @@ const CircularProgress = ({ percentage, color, iconItem }: { percentage: number,
         {/* Inner dimmed track visually filled */}
         <circle
           cx="50%" cy="50%" r="35%"
-          fill={color} stroke="none" className="opacity-10 dark:opacity-20"
+          fill={color} stroke="none" className="opacity-20"
         />
         {/* Outer dimmed track */}
         <circle
           cx="50%" cy="50%" r="45%"
-          fill="none" stroke={color} strokeWidth="1.5" className="opacity-10 dark:opacity-20"
+          fill="none" stroke={color} strokeWidth="1.5" className="opacity-20"
         />
         {/* Progress Arc */}
         <motion.circle
@@ -67,7 +67,7 @@ const CircularProgress = ({ percentage, color, iconItem }: { percentage: number,
           whileInView={{ strokeDashoffset }}
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
-          className="dark:[filter:drop-shadow(0_0_6px_var(--skill-color))]"
+          className="[filter:drop-shadow(0_0_6px_var(--skill-color))]"
         />
       </svg>
       {/* Center content */}
@@ -136,9 +136,9 @@ export default function SkillsSection() {
 
 
   return (
-    <section id="skills" className="py-24 bg-[var(--color-bg)] w-full overflow-hidden relative transition-colors duration-300 border-b border-zinc-200 dark:border-zinc-800">
+    <section id="skills" className="py-24 bg-[var(--color-bg)] w-full overflow-hidden relative transition-colors duration-300 border-b border-zinc-800">
       {/* Subtle dot grid background */}
-      <div className="absolute inset-0 bg-[radial-gradient(#334155_0.8px,transparent_1px)] dark:bg-[radial-gradient(#475569_0.8px,transparent_1px)] bg-[length:20px_20px] opacity-40 pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(#475569_0.8px,transparent_1px)] bg-[length:20px_20px] opacity-40 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
 
@@ -160,7 +160,7 @@ export default function SkillsSection() {
             </span>
             <div className="w-8 h-[1px] bg-[var(--color-accent)] opacity-50"></div>
           </motion.div>
-          <motion.h2 variants={fadeUpVariant} className="text-4xl md:text-5xl font-bold text-center text-[var(--color-text-primary)] dark:text-white mb-8">
+          <motion.h2 variants={fadeUpVariant} className="text-4xl md:text-5xl font-bold text-center text-white mb-8">
             MY TECH STACK
           </motion.h2>
         </motion.div>
@@ -197,10 +197,10 @@ export default function SkillsSection() {
                         iconItem={skill.icon}
                       />
 
-                      <h3 className="font-bold text-[var(--color-text-primary)] dark:text-white text-lg md:text-xl text-center mb-1 drop-shadow-sm">
+                      <h3 className="font-bold text-white text-lg md:text-xl text-center mb-1 drop-shadow-sm">
                         {skill.name}
                       </h3>
-                      <p className="text-[var(--color-text-secondary)] dark:text-zinc-500 text-xs md:text-sm text-center">
+                      <p className="text-zinc-500 text-xs md:text-sm text-center">
                         {skill.category}
                       </p>
                     </div>

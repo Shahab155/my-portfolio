@@ -15,7 +15,7 @@ export default function ProjectsPage() {
   return (
     <main className="min-h-screen bg-[var(--color-bg)] pt-32 pb-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       {/* Subtle dot grid background */}
-      <div className="absolute inset-0 bg-[radial-gradient(#334155_0.8px,transparent_1px)] dark:bg-[radial-gradient(#475569_0.8px,transparent_1px)] bg-[length:20px_20px] opacity-40 pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(#475569_0.8px,transparent_1px)] bg-[length:20px_20px] opacity-40 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         
@@ -47,7 +47,7 @@ export default function ProjectsPage() {
             </span>
             <div className="w-8 h-[1px] bg-[var(--color-accent)] opacity-50"></div>
           </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center text-[var(--color-text-primary)] dark:text-white mb-8">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center text-white mb-8">
             ALL MY PROJECTS
           </h1>
         </motion.div>
@@ -64,13 +64,13 @@ export default function ProjectsPage() {
             >
               {/* Card Wrapper with Gradient Border Effect */}
               <div className="h-full rounded-[2rem] p-[1px] bg-gradient-to-b from-[var(--color-accent)]/30 to-transparent hover:from-[var(--color-accent)]/50 hover:to-cyan-500/20 transition-all duration-500 group">
-                <div className="h-full bg-zinc-50 dark:bg-[#0a0a0a] rounded-[2rem] p-6 flex flex-col relative overflow-hidden">
+                <div className="h-full bg-[#0a0a0a] rounded-[2rem] p-6 flex flex-col relative overflow-hidden">
                   
                   {/* Subtle inner glow */}
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-32 bg-[var(--color-accent)]/10 blur-3xl rounded-full pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                   {/* Project Image */}
-                  <div className="relative w-full aspect-video rounded-xl overflow-hidden mb-6 border border-zinc-200 dark:border-white/5 group-hover:border-[var(--color-accent)]/30 transition-colors duration-500">
+                  <div className="relative w-full aspect-video rounded-xl overflow-hidden mb-6 border border-white/5 group-hover:border-[var(--color-accent)]/30 transition-colors duration-500">
                     <Image 
                       src={project.image} 
                       alt={project.title}
@@ -81,10 +81,10 @@ export default function ProjectsPage() {
                   </div>
 
                   {/* Project Info */}
-                  <h3 className="text-xl font-bold text-[var(--color-text-primary)] dark:text-white mb-3 tracking-wide">
+                  <h3 className="text-xl font-bold text-white mb-3 tracking-wide">
                     {project.title}
                   </h3>
-                  <p className="text-sm font-light text-zinc-700 dark:text-zinc-400 leading-relaxed tracking-wide mb-6 flex-grow line-clamp-4">
+                  <p className="text-sm font-light text-zinc-400 leading-relaxed tracking-wide mb-6 flex-grow line-clamp-4">
                     {project.description}
                   </p>
 
@@ -93,7 +93,7 @@ export default function ProjectsPage() {
                     {project.tech?.map((item) => (
                       <span 
                         key={item} 
-                        className="text-[10px] px-2 py-1 rounded-md bg-zinc-50 dark:bg-zinc-900/50 text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-800 transition-colors hover:border-[var(--color-accent)]/50"
+                        className="text-[10px] px-2 py-1 rounded-md bg-zinc-900/50 text-zinc-400 border border-zinc-800 transition-colors hover:border-[var(--color-accent)]/50"
                       >
                         {item}
                       </span>
@@ -108,7 +108,7 @@ export default function ProjectsPage() {
                           href={project.repoUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-full border border-[var(--color-accent)]/30 text-[var(--color-text-primary)] dark:text-[var(--color-accent)] hover:bg-[var(--color-accent)]/10 hover:border-[var(--color-accent)]/60 transition-all duration-300 text-sm font-medium"
+                          className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-full border border-[var(--color-accent)]/30 text-[var(--color-accent)] hover:bg-[var(--color-accent)]/10 hover:border-[var(--color-accent)]/60 transition-all duration-300 text-sm font-medium"
                         >
                           Repository <FiGithub size={16} />
                         </Link>

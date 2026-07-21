@@ -57,7 +57,7 @@ const infoCards = [
 
 /* ─── Reusable input styles ─── */
 const inputClass =
-  'w-full bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-3 text-[var(--color-text-primary)] dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-cyan-500 focus:outline-none transition-colors duration-300 resize-none';
+  'w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 text-white placeholder-zinc-500 focus:border-cyan-500 focus:outline-none transition-colors duration-300 resize-none';
 
 export default function ContactSection() {
   const [name, setName] = useState('');
@@ -85,7 +85,7 @@ export default function ContactSection() {
         setName('');
         setEmail('');
         setMessage('');
-        setTimeout(() => setIsSuccess(false), 3000);
+        setTimeout(() => setIsSuccess(false), 2000);
       } else {
         setIsError(true);
       }
@@ -99,10 +99,10 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      className="py-24 bg-[var(--color-bg)] w-full overflow-hidden relative transition-colors duration-300 border-b border-zinc-200 dark:border-zinc-800"
+      className="py-24 bg-[var(--color-bg)] w-full overflow-hidden relative transition-colors duration-300 border-b border-zinc-800"
     >
       {/* Subtle dot grid background */}
-      <div className="absolute inset-0 bg-[radial-gradient(#334155_0.8px,transparent_1px)] dark:bg-[radial-gradient(#475569_0.8px,transparent_1px)] bg-[length:20px_20px] opacity-40 pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(#475569_0.8px,transparent_1px)] bg-[length:20px_20px] opacity-40 pointer-events-none" />
 
       {/* Glow accent */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-cyan-500/5 rounded-full blur-3xl pointer-events-none" />
@@ -126,10 +126,10 @@ export default function ContactSection() {
             <div className="w-8 h-px bg-cyan-500 opacity-50" />
           </div>
 
-          <h2 className="text-4xl md:text-5xl font-bold text-[var(--color-text-primary)] dark:text-white mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Let&apos;s Work Together
           </h2>
-          <p className="text-base font-light text-zinc-700 dark:text-zinc-400 leading-relaxed tracking-wide text-center max-w-xl mx-auto">
+          <p className="text-base font-light text-zinc-400 leading-relaxed tracking-wide text-center max-w-xl mx-auto">
             Have a project in mind or want to hire me?<br className="hidden sm:block" />
             I&apos;d love to hear from you.
           </p>
@@ -152,7 +152,7 @@ export default function ContactSection() {
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 whileHover={{ scale: 1.02 }}
-                className="flex items-center gap-4 bg-zinc-50/50 dark:bg-zinc-900/50 border border-zinc-200/50 dark:border-zinc-800/50 hover:border-cyan-500/50 rounded-2xl p-5 cursor-pointer transition-all duration-300 group backdrop-blur-sm"
+                className="flex items-center gap-4 bg-zinc-900/50 border border-zinc-800/50 hover:border-cyan-500/50 rounded-2xl p-5 cursor-pointer transition-all duration-300 group backdrop-blur-sm"
               >
                 {/* Icon box */}
                 <div className="bg-cyan-500/10 text-cyan-500 p-3 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-cyan-500/20 transition-colors duration-300">
@@ -161,13 +161,13 @@ export default function ContactSection() {
 
                 {/* Text */}
                 <div className="min-w-0">
-                  <p className="text-sm text-[var(--color-text-secondary)] dark:text-zinc-400 mb-0.5">{card.title}</p>
-                  <p className="text-[var(--color-text-primary)] dark:text-white font-semibold truncate">{card.subtitle}</p>
+                  <p className="text-sm text-zinc-400 mb-0.5">{card.title}</p>
+                  <p className="text-white font-semibold truncate">{card.subtitle}</p>
                 </div>
 
                 {/* Arrow */}
                 <motion.span
-                  className="ml-auto text-zinc-400 dark:text-zinc-600 group-hover:text-cyan-500 text-xl transition-colors duration-300 shrink-0"
+                  className="ml-auto text-zinc-600 group-hover:text-cyan-500 text-xl transition-colors duration-300 shrink-0"
                   initial={{ x: 0 }}
                   whileHover={{ x: 4 }}
                 >
@@ -199,11 +199,11 @@ export default function ContactSection() {
           >
             <form
               onSubmit={handleSubmit}
-              className="flex flex-col gap-5 bg-zinc-50/50 dark:bg-zinc-900/50 border border-zinc-200/50 dark:border-zinc-800/50 rounded-2xl p-6 md:p-8 backdrop-blur-sm"
+              className="flex flex-col gap-5 bg-zinc-900/50 border border-zinc-800/50 rounded-2xl p-6 md:p-8 backdrop-blur-sm"
             >
               {/* Name */}
               <div>
-                <label htmlFor="contact-name" className="block text-sm text-[var(--color-text-secondary)] dark:text-zinc-400 mb-1">
+                <label htmlFor="contact-name" className="block text-sm text-zinc-400 mb-1">
                   Name
                 </label>
                 <input
@@ -220,7 +220,7 @@ export default function ContactSection() {
 
               {/* Email */}
               <div>
-                <label htmlFor="contact-email" className="block text-sm text-[var(--color-text-secondary)] dark:text-zinc-400 mb-1">
+                <label htmlFor="contact-email" className="block text-sm text-zinc-400 mb-1">
                   Email
                 </label>
                 <input
@@ -237,7 +237,7 @@ export default function ContactSection() {
 
               {/* Message */}
               <div>
-                <label htmlFor="contact-message" className="block text-sm text-[var(--color-text-secondary)] dark:text-zinc-400 mb-1">
+                <label htmlFor="contact-message" className="block text-sm text-zinc-400 mb-1">
                   Message
                 </label>
                 <textarea

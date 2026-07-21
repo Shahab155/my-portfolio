@@ -1,22 +1,6 @@
 @import "tailwindcss";
 
-/* Enable class-based dark mode in Tailwind v4 */
-@custom-variant dark (&:where(.dark, .dark *));
-
 :root {
-  --color-primary: #0A2540;
-  --color-accent: #22D3EE;
-  --color-bg: #F8FAFC;
-  --color-surface: #FFFFFF;
-  --color-text-primary: #111827;
-  --color-text-secondary: #64748B;
-
-  /* Global background/foreground mappings */
-  --background: var(--color-bg);
-  --foreground: var(--color-text-primary);
-}
-
-.dark {
   --color-primary: #0A2540;
   --color-accent: #22D3EE;
   --color-bg: #0a0a0a;
@@ -24,6 +8,7 @@
   --color-text-primary: #F1F5F9;
   --color-text-secondary: #94A3B8;
 
+  /* Global background/foreground mappings */
   --background: var(--color-bg);
   --foreground: var(--color-text-primary);
 }

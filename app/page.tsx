@@ -28,9 +28,9 @@ export default function Home() {
 
   return (
     <main>
-      <section id="home" className="relative min-h-screen bg-[var(--color-bg)] overflow-x-hidden flex items-center py-10 border-b border-zinc-200 dark:border-zinc-800">
+      <section id="home" className="relative min-h-screen bg-[var(--color-bg)] overflow-x-hidden flex items-center py-10 border-b border-zinc-800">
         {/* Subtle dot grid background */}
-        <div className="absolute inset-0 bg-[radial-gradient(#334155_0.8px,transparent_1px)] dark:bg-[radial-gradient(#475569_0.8px,transparent_1px)] bg-[length:20px_20px] opacity-40" />
+        <div className="absolute inset-0 bg-[radial-gradient(#475569_0.8px,transparent_1px)] bg-[length:20px_20px] opacity-40" />
 
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-32 md:pt-20 pb-16 lg:pb-0 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -45,7 +45,7 @@ export default function Home() {
 
               {/* Heading */}
               <div className="space-y-3">
-                <h1 className="text-6xl md:text-7xl font-black tracking-tighter text-[var(--color-text-primary)] dark:text-white uppercase">
+                <h1 className="text-6xl md:text-7xl font-black tracking-tighter text-white uppercase">
                   IT&apos;S ME
                 </h1>
                 <h1 className="text-6xl md:text-7xl font-black tracking-tighter bg-gradient-to-r from-[var(--color-accent)] to-cyan-400 bg-clip-text text-transparent uppercase">
@@ -54,7 +54,7 @@ export default function Home() {
               </div>
 
               {/* Description */}
-              <p className="max-w-lg text-base font-light text-zinc-700 dark:text-zinc-400 leading-relaxed tracking-wide">
+              <p className="max-w-lg text-base font-light text-zinc-400 leading-relaxed tracking-wide">
                 I am a{' '}
                 <span className="relative inline-block">
                   <span className="relative z-10 text-[var(--color-text-primary)] font-semibold">

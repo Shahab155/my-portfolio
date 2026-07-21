@@ -43,24 +43,24 @@ const ExperienceEntry = ({
             className="absolute left-0 top-2 w-3 h-3 rounded-full bg-[var(--color-accent)] border-2 border-[var(--color-bg)] z-10"
           />
 
-          <div className="border border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/40 backdrop-blur-sm p-4 sm:p-6 rounded-lg hover:border-[var(--color-accent)]/50 transition-all duration-300">
+          <div className="border border-zinc-800 bg-zinc-900/40 backdrop-blur-sm p-4 sm:p-6 rounded-lg hover:border-[var(--color-accent)]/50 transition-all duration-300">
             <p className="text-[var(--color-accent)] text-xs sm:text-sm font-medium tracking-wider mb-3">
               {/* {dateRange} */}
             </p>
-            <h3 className="text-[var(--color-text-primary)] dark:text-white text-lg sm:text-xl font-bold uppercase mb-2 tracking-wide">
+            <h3 className="text-white text-lg sm:text-xl font-bold uppercase mb-2 tracking-wide">
               {/* {company} */}
             </h3>
-            <p className="text-[var(--color-text-secondary)] dark:text-zinc-500 text-xs sm:text-sm uppercase tracking-wider mb-3">
+            <p className="text-zinc-500 text-xs sm:text-sm uppercase tracking-wider mb-3">
               {role}
             </p>
-            <p className="text-zinc-700 dark:text-zinc-400 text-sm leading-relaxed mb-4">
+            <p className="text-zinc-400 text-sm leading-relaxed mb-4">
               {description}
             </p>
             <div className="flex flex-wrap gap-2">
               {tags.map((tag, idx) => (
                 <span
                   key={idx}
-                  className="px-2 sm:px-3 py-1 bg-zinc-900 border border-zinc-800 text-white dark:bg-zinc-900 dark:border-zinc-800 dark:text-white text-[10px] sm:text-xs font-medium uppercase tracking-wider rounded"
+                  className="px-2 sm:px-3 py-1 bg-zinc-900 border border-zinc-800 text-white text-[10px] sm:text-xs font-medium uppercase tracking-wider rounded"
                 >
                   {tag}
                 </span>
@@ -81,24 +81,24 @@ const ExperienceEntry = ({
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <div className="border border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/40 backdrop-blur-sm p-8 rounded-lg hover:border-[var(--color-accent)]/50 transition-all duration-300">
+              <div className="border border-zinc-800 bg-zinc-900/40 backdrop-blur-sm p-8 rounded-lg hover:border-[var(--color-accent)]/50 transition-all duration-300">
                 <p className="text-[var(--color-accent)] text-sm font-medium tracking-wider mb-4">
                   {dateRange}
                 </p>
-                <h3 className="text-[var(--color-text-primary)] dark:text-white text-2xl font-bold uppercase mb-2 tracking-wide">
+                <h3 className="text-white text-2xl font-bold uppercase mb-2 tracking-wide">
                   {company}
                 </h3>
-                <p className="text-[var(--color-text-secondary)] dark:text-zinc-500 text-sm uppercase tracking-wider mb-4">
+                <p className="text-zinc-500 text-sm uppercase tracking-wider mb-4">
                   {role}
                 </p>
-                <p className="text-zinc-700 dark:text-zinc-400 leading-relaxed mb-6">
+                <p className="text-zinc-400 leading-relaxed mb-6">
                   {description}
                 </p>
                 <div className="flex flex-wrap gap-3">
                   {tags.map((tag, idx) => (
                     <span
                       key={idx}
-                      className="px-3 py-1 bg-zinc-900 border border-zinc-800 text-white dark:bg-zinc-900 dark:border-zinc-800 dark:text-white text-xs font-medium uppercase tracking-wider rounded"
+                      className="px-3 py-1 bg-zinc-900 border border-zinc-800 text-white text-xs font-medium uppercase tracking-wider rounded"
                     >
                       {tag}
                     </span>
@@ -130,24 +130,24 @@ const ExperienceEntry = ({
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <div className="border border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/40 backdrop-blur-sm p-8 rounded-lg hover:border-[var(--color-accent)]/50 transition-all duration-300">
+              <div className="border border-zinc-800 bg-zinc-900/40 backdrop-blur-sm p-8 rounded-lg hover:border-[var(--color-accent)]/50 transition-all duration-300">
                 <p className="text-[var(--color-accent)] text-sm font-medium tracking-wider mb-4">
                   {dateRange}
                 </p>
-                <h3 className="text-[var(--color-text-primary)] dark:text-white text-2xl font-bold uppercase mb-2 tracking-wide">
+                <h3 className="text-white text-2xl font-bold uppercase mb-2 tracking-wide">
                   {company}
                 </h3>
-                <p className="text-[var(--color-text-secondary)] dark:text-zinc-500 text-sm uppercase tracking-wider mb-4">
+                <p className="text-zinc-500 text-sm uppercase tracking-wider mb-4">
                   {role}
                 </p>
-                <p className="text-zinc-700 dark:text-zinc-400 leading-relaxed mb-6">
+                <p className="text-zinc-400 leading-relaxed mb-6">
                   {description}
                 </p>
                 <div className="flex flex-wrap gap-3">
                   {tags.map((tag, idx) => (
                     <span
                       key={idx}
-                      className="px-3 py-1 bg-zinc-900 border border-zinc-800 text-white dark:bg-zinc-900 dark:border-zinc-800 dark:text-white text-xs font-medium uppercase tracking-wider rounded"
+                      className="px-3 py-1 bg-zinc-900 border border-zinc-800 text-white text-xs font-medium uppercase tracking-wider rounded"
                     >
                       {tag}
                     </span>
@@ -193,10 +193,10 @@ export default function ExperienceSectionNew() {
   return (
     <section
       id="experience"
-      className="py-16 sm:py-20 lg:py-24 bg-[var(--color-bg)] w-full relative overflow-hidden border-b border-zinc-200 dark:border-zinc-800 transition-colors duration-300"
+      className="py-16 sm:py-20 lg:py-24 bg-[var(--color-bg)] w-full relative overflow-hidden border-b border-zinc-800 transition-colors duration-300"
     >
       {/* Subtle dot grid background */}
-      <div className="absolute inset-0 bg-[radial-gradient(#334155_0.8px,transparent_1px)] dark:bg-[radial-gradient(#475569_0.8px,transparent_1px)] bg-[length:20px_20px] opacity-40 pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(#475569_0.8px,transparent_1px)] bg-[length:20px_20px] opacity-40 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         {/* Section Heading */}
@@ -214,7 +214,7 @@ export default function ExperienceSectionNew() {
             </span>
             <div className="w-6 sm:w-8 h-[1px] bg-[var(--color-accent)] opacity-50" />
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[var(--color-text-primary)] dark:text-white mb-4 px-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 px-4">
             Where I&apos;ve Worked
           </h2>
         </motion.div>

@@ -275,10 +275,10 @@ export default function InteractiveTerminal() {
   return (
     <section
       id="about"
-      className="py-24 bg-[var(--color-bg)] w-full overflow-hidden relative border-b border-zinc-200 dark:border-zinc-800 transition-colors duration-300"
+      className="py-24 bg-[var(--color-bg)] w-full overflow-hidden relative border-b border-zinc-800 transition-colors duration-300"
     >
       {/* Background */}
-      <div className="absolute inset-0 bg-[radial-gradient(#334155_0.8px,transparent_1px)] dark:bg-[radial-gradient(#475569_0.8px,transparent_1px)] bg-[length:20px_20px] opacity-40 pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(#475569_0.8px,transparent_1px)] bg-[length:20px_20px] opacity-40 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         {/* Terminal Window */}

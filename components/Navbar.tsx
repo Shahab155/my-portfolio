@@ -90,7 +90,7 @@ export default function Navbar() {
           transition-all duration-500 rounded-3xl backdrop-blur-xl
           border-2
           ${scrolled
-            ? 'bg-background/80 border-[var(--color-accent)]/30 shadow-[0_20px_48px_-12px_rgba(0,0,0,0.3)] dark:shadow-[0_20px_48px_-12px_rgba(0,0,0,0.6)]'
+            ? 'bg-background/80 border-[var(--color-accent)]/30 shadow-[0_20px_48px_-12px_rgba(0,0,0,0.6)]'
             : 'bg-background/40 border-[var(--color-accent)]/15 shadow-md'}
         `}
       >
@@ -98,7 +98,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link
             href="/"
-            className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-[var(--color-primary)] dark:text-[var(--color-accent)] group hover:opacity-80 transition-opacity focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 rounded-md px-2 py-1"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-[var(--color-accent)] group hover:opacity-80 transition-opacity focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 rounded-md px-2 py-1"
           >
             Shahab
           </Link>
@@ -116,7 +116,7 @@ export default function Navbar() {
                     className={`relative text-md font-medium transition-all group focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-background rounded-sm px-2 py-1 ${
                       isActive
                         ? 'text-[var(--color-accent)]'
-                        : 'text-zinc-900 dark:text-white hover:text-[var(--color-accent)]'
+                        : 'text-white hover:text-[var(--color-accent)]'
                     }`}
                   >
                     {link.name}
@@ -165,7 +165,7 @@ export default function Navbar() {
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
               className={`
                 fixed top-0 right-0 bottom-0 w-[280px] p-10
-                bg-background/95 backdrop-blur-2xl border-l border-white/5 dark:border-zinc-800/50 shadow-2xl
+                bg-background/95 backdrop-blur-2xl border-l border-zinc-800/50 shadow-2xl
                 flex flex-col items-start gap-8 md:hidden z-50
               `}
             >
@@ -195,7 +195,7 @@ export default function Navbar() {
                       className={`text-xl font-semibold transition-colors block py-2 rounded-md px-3 focus:outline-none focus:ring-2 focus:ring-cyan-500 ${
                         isActive
                           ? 'text-[var(--color-accent)]'
-                          : 'text-zinc-900 dark:text-white hover:text-[var(--color-accent)]'
+                          : 'text-white hover:text-[var(--color-accent)]'
                       }`}
                     >
                       {link.name}
