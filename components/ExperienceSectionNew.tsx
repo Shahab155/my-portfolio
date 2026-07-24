@@ -165,7 +165,7 @@ const ExperienceEntry = ({
 export default function ExperienceSectionNew() {
   const experiences = [
     {
-      dateRange: '8/2025 - PRESENT',
+      dateRange: '8/2025 - 2/2026',
       company: 'IRIS SOFTWARE SOLUTIONS',
       role: 'FULL STACK Web DEVELOPER',
       description: 'Working as a Full Stack Web Developer on real client-facing projects delivering complete web solutions from frontend to backend. Built and maintained web applications using Next.js and Tailwind CSS for modern responsive frontends.',
