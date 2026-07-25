@@ -4,6 +4,9 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: Request) {
   try {
+    // Initialize Resend at request time to ensure env var is available
+    const resend = new Resend(process.env.RESEND_API_KEY);
+    
     const body = await request.json();
     const { name, email, message } = body;
 

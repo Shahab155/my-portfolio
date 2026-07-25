@@ -8,14 +8,15 @@ export const projects = [
     demoUrl: 'https://focus-app-tawny-nine.vercel.app/',
     tech: ['Next.js', 'TypeScript',"OpenAI Agents SDK", 'Tailwind CSS', "NextAuth"],
   },
+  
   {
-    id: 'fisherman-website',
-    title: "Fishermen's Co-operative Society of Pakistan",
-    description: "A web platform for Pakistan's Fishermen's Co-operative Society. A government-affiliated body serving fishermen's welfare since 1945. Built with Next.js and Tailwind CSS, the site covers marine and inland fisheries, leadership history, welfare work, and a contact system",
-    image: '/projects/fcs.png',
-    repoUrl: '',
-    demoUrl: 'https://fcslpk.org/',
-    tech: ['Next.js', 'Framer Motion','TypeScript', 'Tailwind CSS'],
+    id: 'job-tracker-ai',
+    title: "Job Tracker AI",
+    description: "A full-stack job application tracker that turns a chaotic job search into a structured, data-driven pipeline. Users track applications across five stages while an AI copilot scores resume fit, drafts tailored cover letters, and generates interview prep — all in one place. Analytics surface conversion rates and stage velocity to show where the funnel is leaking.",
+    image: '/projects/job-tracker.png',
+    repoUrl: 'https://github.com/Shahab155/job-tracker-frontend',
+    demoUrl: 'https://job-tracker-frontend-self.vercel.app/login',
+    tech: ['Next.js', 'FastAPI', 'OpenAI Agents SDK','TypeScript'],
   },
   {
     id: 'techz-ecommerce',
@@ -43,6 +44,16 @@ export const projects = [
     repoUrl: 'https://github.com/Shahab155/Inventory-management-system',
     demoUrl: 'http://inventory-management-system-hvttkqubqmchh9zzuwi5qj.streamlit.app/',
     tech: ['Streamlit', 'Python', 'SQLite'],
+  },
+  
+  {
+    id: 'fisherman-website',
+    title: "Fishermen's Co-operative Society of Pakistan",
+    description: "A web platform for Pakistan's Fishermen's Co-operative Society. A government-affiliated body serving fishermen's welfare since 1945. Built with Next.js and Tailwind CSS, the site covers marine and inland fisheries, leadership history, welfare work, and a contact system",
+    image: '/projects/fcs.png',
+    repoUrl: '',
+    demoUrl: 'https://fcslpk.org/',
+    tech: ['Next.js', 'Framer Motion','TypeScript', 'Tailwind CSS'],
   },
   {
     id: 'ecommerce-frontend',
