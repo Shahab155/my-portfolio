@@ -58,7 +58,7 @@ export default function Home() {
                 I am a{' '}
                 <span className="relative inline-block">
                   <span className="relative z-10 text-[var(--color-text-primary)] font-semibold">
-                    Full Stack & AI Developer
+                    Full Stack Developer
                   </span>
                   <motion.svg
                     viewBox="0 0 200 12"

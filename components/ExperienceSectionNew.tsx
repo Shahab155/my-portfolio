@@ -165,12 +165,21 @@ const ExperienceEntry = ({
 export default function ExperienceSectionNew() {
   const experiences = [
     {
+      dateRange: '3/2026 - Present',
+      company: 'SOFTORA SYSTEMS',
+      role: 'FULL STACK DEVELOPER',
+      description: 'Developing full-stack, client-facing applications with a focus on scalable backend systems, API development, database integration, and end-to-end feature delivery. Building modern applications using Next.js, FastAPI, PostgreSQL, and Python while collaborating on real-world product requirements.',
+      tags: ['REACT.JS','NEXT.JS', 'TAILWIND CSS', 'POSTGRESQL', "PYTHON", 'FASTAPI'],
+      position: 'left' as const,
+    },
+     
+    {
       dateRange: '8/2025 - 2/2026',
       company: 'IRIS SOFTWARE SOLUTIONS',
-      role: 'FULL STACK Web DEVELOPER',
-      description: 'Working as a Full Stack Web Developer on real client-facing projects delivering complete web solutions from frontend to backend. Built and maintained web applications using Next.js and Tailwind CSS for modern responsive frontends.',
+      role: 'Junior Web DEVELOPER',
+      description: 'Worked as a Junior Web Developer on real client-facing projects delivered complete web solutions from frontend to backend. Built and maintained web applications using Next.js and Tailwind CSS for modern responsive frontends.',
       tags: ['NEXT.JS', 'TAILWIND CSS', 'PHP', 'MYSQL', 'XAMPP'],
-      position: 'left' as const,
+      position: 'right' as const,
     },
     {
       dateRange: '2/2026 - 5/2026',
@@ -178,7 +187,7 @@ export default function ExperienceSectionNew() {
       role: 'PYTHON INSTRUCTOR',
       description: 'Trained students in Python fundamentals and programming concepts as an official instructor at NAVTTC. Designing and delivering structured lesson plans to help beginners build a strong foundation in Python.',
       tags: ['PYTHON', 'TEACHING', 'TRAINING'],
-      position: 'right' as const,
+      position: 'left' as const,
     },
     {
       dateRange: '5/2025 - 7/2025',
@@ -186,7 +195,7 @@ export default function ExperienceSectionNew() {
       role: 'WEB DEVELOPER INTERN',
       description: 'Completed a 3-month internship building full stack web applications using PHP, MySQL, XAMPP, Next.js and Tailwind CSS. Gained hands-on experience working in a professional software house environment collaborating with a team on live projects.',
       tags: ['PHP', 'MYSQL', 'XAMPP', 'NEXT.JS', 'TAILWIND CSS'],
-      position: 'left' as const,
+      position: 'right' as const,
     },
   ];
 
