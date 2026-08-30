@@ -72,7 +72,7 @@ export default function ProjectsSection() {
                   <div className="relative w-full aspect-video rounded-xl overflow-hidden mb-6 border border-white/5 group-hover:border-[var(--color-accent)]/30 transition-colors duration-500">
                     <Image
                       src={project.image}
-                      alt={project.title}
+                      alt=""
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       className="object-cover group-hover:scale-105 transition-transform duration-700"

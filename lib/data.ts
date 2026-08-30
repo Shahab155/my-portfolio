@@ -15,7 +15,7 @@ export const projects = [
     description: "A full-stack job application tracker that turns a chaotic job search into a structured, data-driven pipeline. Users track applications across five stages while an AI copilot scores resume fit, drafts tailored cover letters, and generates interview prep — all in one place. Analytics surface conversion rates and stage velocity to show where the funnel is leaking.",
     image: '/projects/job-tracker.png',
     repoUrl: 'https://github.com/Shahab155/job-tracker-frontend',
-    demoUrl: 'https://job-tracker-frontend-self.vercel.app/login',
+    demoUrl: 'https://job-tracker-frontend-psi-eight.vercel.app/login',
     tech: ['Next.js', 'FastAPI', 'OpenAI Agents SDK','TypeScript'],
   },
   {
