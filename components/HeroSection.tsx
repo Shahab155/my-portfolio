@@ -40,10 +40,10 @@ const [isVisible, setIsVisible] = useState(false);
 
               {/* Heading */}
               <div className="space-y-3">
-                <h1 className="text-6xl md:text-7xl font-black tracking-tighter text-white uppercase">
+                <h1 className="text-5xl md:text-6xl font-black tracking-tighter text-white uppercase">
                   IT&apos;S ME
                 </h1>
-                <h1 className="text-6xl md:text-7xl font-black tracking-tighter bg-gradient-to-r from-[var(--color-accent)] to-cyan-400 bg-clip-text text-transparent uppercase">
+                <h1 className="text-5xl md:text-6xl font-black tracking-tighter bg-gradient-to-r from-[var(--color-accent)] to-cyan-400 bg-clip-text text-transparent uppercase">
                   SHAHAB UD DIN
                 </h1>
               </div>

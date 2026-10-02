@@ -1,31 +1,42 @@
 'use client';
 
-import { motion, useAnimation } from 'framer-motion';
-import { useState, useRef, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { useState } from 'react';
 
 import {
   SiNextdotjs,SiNodedotjs , SiReact, SiTailwindcss, SiJavascript, SiTypescript,
-  SiPython, SiFastapi, SiPhp, SiMysql, SiAnthropic, SiOpenai, SiGit
+  SiPython, SiFastapi, SiPhp, SiMysql, SiAnthropic, SiOpenai, SiGit,
+  SiPostgresql,
+  SiMongodb,
+  SiSqlite
 } from 'react-icons/si';
 import { VscVscode } from 'react-icons/vsc';
 import { HiOutlineDatabase } from 'react-icons/hi';
 
+const categories = ['Frontend', 'Backend', 'Languages', 'Databases', 'DevOps & Tools'] as const;
+type SkillCategory = (typeof categories)[number];
+
 const skills = [
-  { name: 'Next.js', category: 'Framework', percentage: 80, color: 'var(--color-text-primary)', icon: <SiNextdotjs /> },
-   { name: 'Node.js', category: 'Framework', percentage: 75, color: 'green', icon: <SiNodedotjs /> },
-  { name: 'React', category: 'Framework', percentage: 80, color: '#61dafb', icon: <SiReact /> },
-  { name: 'Tailwind CSS', category: 'Styling', percentage: 85, color: '#38bdf8', icon: <SiTailwindcss /> },
-  { name: 'JavaScript', category: 'Language', percentage: 80, color: '#f7df1e', icon: <SiJavascript /> },
-  { name: 'TypeScript', category: 'Language', percentage: 65, color: '#3178c6', icon: <SiTypescript /> },
-  { name: 'Python', category: 'Language', percentage: 70, color: '#3776ab', icon: <SiPython /> },
-  { name: 'FastAPI', category: 'Framework', percentage: 55, color: '#009688', icon: <SiFastapi /> },
-  { name: 'PHP', category: 'Language', percentage: 65, color: '#777bb4', icon: <SiPhp /> },
-  { name: 'MySQL', category: 'Database', percentage: 75, color: '#4479a1', icon: <SiMysql /> },
-  { name: 'Neon DB', category: 'Database', percentage: 55, color: '#00e599', icon: <HiOutlineDatabase /> },
-  { name: 'Claude Code', category: 'AI Tools', percentage: 70, color: '#d97757', icon: <SiAnthropic /> },
-  { name: 'OpenAI SDK', category: 'Agentic AI', percentage: 65, color: '#412991', icon: <SiOpenai /> },
-  { name: 'Git', category: 'Tools', percentage: 65, color: '#f05032', icon: <SiGit /> },
-  { name: 'VS Code', category: 'Tools', percentage: 75, color: '#007acc', icon: <VscVscode /> },
+  { name: 'Next.js', category: 'Frontend', percentage: 80, color: 'var(--color-text-primary)', icon: <SiNextdotjs /> },
+  { name: 'Node.js', category: 'Backend', percentage: 75, color: 'green', icon: <SiNodedotjs /> },
+  { name: 'React', category: 'Frontend', percentage: 80, color: '#61dafb', icon: <SiReact /> },
+  { name: 'Tailwind CSS', category: 'Frontend', percentage: 85, color: '#38bdf8', icon: <SiTailwindcss /> },
+  { name: 'JavaScript', category: 'Languages', percentage: 80, color: '#f7df1e', icon: <SiJavascript /> },
+  { name: 'JavaScript', category: 'Backend', percentage: 80, color: '#f7df1e', icon: <SiJavascript /> },
+  { name: 'TypeScript', category: 'Languages', percentage: 65, color: '#3178c6', icon: <SiTypescript /> },
+
+  { name: 'Python', category: 'Languages', percentage: 70, color: '#b1c328', icon: <SiPython /> },
+{ name: 'Python', category: 'Backend', percentage: 70, color: '#b1c328', icon: <SiPython /> },
+  { name: 'SQL', category: 'Languages', percentage: 100, color: '#3776ab' },
+  { name: 'FastAPI', category: 'Backend', percentage: 55, color: '#009688', icon: <SiFastapi /> },
+  { name: 'MySQL', category: 'Databases', percentage: 75, color: '#4479a1', icon: <SiMysql /> },
+  { name: 'MongoDB', category: 'Databases', percentage: 75, color: '#00e599', icon: <SiMongodb /> },
+   { name: 'PostreSQL', category: 'Databases', percentage: 75, color: '#4479a1', icon: <SiPostgresql /> },
+  { name: 'Neon DB', category: 'Databases', percentage: 55, color: '#00e599', icon: <HiOutlineDatabase /> },
+  { name: 'Claude Code', category: 'DevOps & Tools', percentage: 70, color: '#d97757', icon: <SiAnthropic /> },
+  { name: 'OpenAI SDK', category: 'DevOps & Tools', percentage: 65, color: '#412991', icon: <SiOpenai /> },
+  { name: 'Git/Github', category: 'DevOps & Tools', percentage: 65, color: '#f05032', icon: <SiGit /> },
+  { name: 'VS Code', category: 'DevOps & Tools', percentage: 75, color: '#007acc', icon: <VscVscode /> },
 ];
 
 const CircularProgress = ({ percentage, color, iconItem }: { percentage: number, color: string, iconItem: React.ReactNode }) => {
@@ -87,53 +98,8 @@ export default function SkillsSection() {
     visible: { opacity: 1, y: 0 },
   };
 
-  const [isHovering, setIsHovering] = useState(false);
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
-  const controls = useAnimation();
-
-  const duration = skills.length * 3;
-
-  useEffect(() => {
-    const startAnimation = () => {
-      if (!trackRef.current) return;
-
-      // Get the first set of skills to calculate width
-      const firstSet = trackRef.current.firstElementChild as HTMLElement;
-      if (!firstSet) return;
-
-      const setWidth = firstSet.offsetWidth;
-      const gap = parseFloat(window.getComputedStyle(trackRef.current).gap) || 0;
-      const totalWidth = setWidth + gap;
-
-      if (totalWidth > 0 && !isHovering) {
-        controls.start({
-          x: [0, -totalWidth],
-          transition: {
-            duration: duration,
-            repeat: Infinity,
-            repeatType: "loop",
-            ease: "linear",
-          },
-        });
-      } else {
-        controls.stop();
-      }
-    };
-
-    // Initial start
-    const timer = setTimeout(startAnimation, 100);
-
-    // Restart on resize
-    window.addEventListener('resize', startAnimation);
-
-    return () => {
-      clearTimeout(timer);
-      window.removeEventListener('resize', startAnimation);
-    };
-  }, [isHovering, controls, duration]);
-
-
+  const [activeCategory, setActiveCategory] = useState<SkillCategory>('Frontend');
+  const filteredSkills = skills.filter((skill) => skill.category === activeCategory);
 
   return (
     <section id="skills" className="py-24 bg-[var(--color-bg)] w-full overflow-hidden relative transition-colors duration-300 border-b border-zinc-800">
@@ -160,55 +126,53 @@ export default function SkillsSection() {
             </span>
             <div className="w-8 h-[1px] bg-[var(--color-accent)] opacity-50"></div>
           </motion.div>
-          <motion.h2 variants={fadeUpVariant} className="text-4xl md:text-5xl font-bold text-center text-white mb-8">
+          <motion.h2 variants={fadeUpVariant} className="text-3xl font-bold text-white md:text-4xl text-center mb-4">
             MY TECH STACK
           </motion.h2>
         </motion.div>
 
-        {/* Skills Slider */}
-        <div className="relative w-full overflow-hidden py-4">
-          {/* Gradient Masks for fading edges */}
-          <div className="absolute left-0 top-0 bottom-0 w-12 md:w-24 bg-gradient-to-r from-[var(--color-bg)] to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-12 md:w-24 bg-gradient-to-l from-[var(--color-bg)] to-transparent z-10 pointer-events-none" />
+        <div className="mb-8 flex flex-wrap justify-center gap-3 px-4" role="group" aria-label="Filter skills by category">
+          {categories.map((category) => {
+            const isActive = category === activeCategory;
 
-          {/* Animated Track - Single continuous animation */}
-          <div
-            ref={scrollContainerRef}
-            className="overflow-hidden"
-            onMouseEnter={() => setIsHovering(true)}
-            onMouseLeave={() => setIsHovering(false)}
-          >
-            <motion.div
-              ref={trackRef}
-              className="flex gap-4 md:gap-8"
-              animate={controls}
+            return (
+              <button
+                key={category}
+                type="button"
+                onClick={() => setActiveCategory(category)}
+                aria-pressed={isActive}
+                className={`cursor-pointer rounded-full border px-5 py-2 text-sm font-semibold transition-colors ${
+                  isActive
+                    ? 'border-[var(--color-accent)] bg-[var(--color-accent)] text-[var(--color-bg)]'
+                    : 'border-zinc-600 text-zinc-300 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]'
+                }`}
+              >
+                {category}
+              </button>
+            );
+          })}
+        </div>
+
+        <div className="flex flex-wrap justify-center gap-4 py-4 md:gap-8">
+          {filteredSkills.map((skill) => (
+            <div
+              key={skill.name}
+              className="flex w-40 shrink-0 flex-col items-center md:w-48 lg:w-56"
             >
-              {/* Render 3 sets for seamless infinite scroll */}
-              {[...Array(3)].map((_, setIndex) => (
-                <div key={setIndex} className="flex gap-4 md:gap-8 shrink-0">
-                  {skills.map((skill, index) => (
-                    <div
-                      key={`${skill.name}-${setIndex}-${index}`}
-                      className="flex flex-col items-center w-40 md:w-48 lg:w-56 shrink-0"
-                    >
-                      <CircularProgress
-                        percentage={skill.percentage}
-                        color={skill.color}
-                        iconItem={skill.icon}
-                      />
+              <CircularProgress
+                percentage={skill.percentage}
+                color={skill.color}
+                iconItem={skill.icon}
+              />
 
-                      <h3 className="font-bold text-white text-lg md:text-xl text-center mb-1 drop-shadow-sm">
-                        {skill.name}
-                      </h3>
-                      <p className="text-zinc-500 text-xs md:text-sm text-center">
-                        {skill.category}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              ))}
-            </motion.div>
-          </div>
+              <h3 className="mb-1 text-center text-lg font-bold text-white drop-shadow-sm md:text-xl">
+                {skill.name}
+              </h3>
+              <p className="text-center text-xs text-zinc-500 md:text-sm">
+                {skill.category}
+              </p>
+            </div>
+          ))}
         </div>
 
         {/* CTA Button */}

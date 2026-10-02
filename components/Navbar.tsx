@@ -86,7 +86,7 @@ export default function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ type: 'spring', stiffness: 100, damping: 20 }}
         className={`
-          w-full max-w-7xl px-0 py-4 flex justify-between items-center
+          w-full max-w-7xl px-0 py-2 flex justify-between items-center
           transition-all duration-500 rounded-3xl backdrop-blur-xl
           border-2
           ${scrolled

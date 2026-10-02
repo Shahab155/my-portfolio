@@ -5,6 +5,8 @@ import Footer from '@/components/Footer';
 import ProjectsSection from '@/components/ProjectsSection';
 import SkillsSection from '@/components/SkillsSection';
 import HeroSection from '@/components/HeroSection';
+import ServicesSection from '@/components/ServicesSection';
+import DevelopmentProcessSection from '@/components/DevelopmentProcessSection';
 
 export default function Home() {
  
@@ -15,6 +17,8 @@ export default function Home() {
       <InteractiveTerminal />
       <ExperienceSection />
       <SkillsSection />
+      <ServicesSection/>
+      <DevelopmentProcessSection />
       <ProjectsSection />
       <ContactSection />
       <Footer />

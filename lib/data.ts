@@ -1,14 +1,14 @@
 export const projects = [
+ 
   {
-    id: 'focus-app',
-    title: 'Focus App',
-    description: 'A modern and intuitive AI-Powered productivity app that enhances your focus by prioritizing your most important top 3 three goals that matters the most to aviod distractions. It helps you to stay focused and achieve your goals with ease.',
-    image: '/projects/focuss.png',
-    repoUrl: 'https://github.com/Shahab155/focus-app',
-    demoUrl: 'https://focus-app-tawny-nine.vercel.app/',
-    tech: ['Next.js', 'TypeScript',"OpenAI Agents SDK", 'Tailwind CSS', "NextAuth"],
+    id: 'corporate-website',
+    title: 'A.A. Dewan',
+    description: 'Designed and developed a professional, clean, and responsive website for a leading law firm in Pakistan. The project includes a modern homepage, services pages, blog section, and contact system to help the firm attract local and overseas clients.',
+    image: '/projects/aadewan.png',
+    repoUrl: '',
+    demoUrl: 'https://aadewan.com.pk/',
+    tech: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL'],
   },
-  
   {
     id: 'job-tracker-ai',
     title: "Job Tracker AI",
@@ -28,14 +28,15 @@ export const projects = [
     tech: ['Next.js', 'Tailwind CSS', 'Neon PostgreSQL', 'NextAuth'],
   },
    {
-    id: 'corporate-website',
-    title: 'A.A. Dewan',
-    description: 'Designed and developed a professional, clean, and responsive website for a leading law firm in Pakistan. The project includes a modern homepage, services pages, blog section, and contact system to help the firm attract local and overseas clients.',
-    image: '/projects/aadewan.png',
-    repoUrl: '',
-    demoUrl: 'https://aadewan.com.pk/',
-    tech: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL'],
+    id: 'focus-app',
+    title: 'Focus App',
+    description: 'A modern and intuitive AI-Powered productivity app that enhances your focus by prioritizing your most important top 3 three goals that matters the most to aviod distractions. It helps you to stay focused and achieve your goals with ease.',
+    image: '/projects/focuss.png',
+    repoUrl: 'https://github.com/Shahab155/focus-app',
+    demoUrl: 'https://focus-app-tawny-nine.vercel.app/',
+    tech: ['Next.js', 'TypeScript',"OpenAI Agents SDK", 'Tailwind CSS', "NextAuth"],
   },
+   
   {
     id: 'inventory',
     title: 'Inventory Management System',

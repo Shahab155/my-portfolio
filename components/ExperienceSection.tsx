@@ -45,10 +45,10 @@ const ExperienceEntry = ({
 
           <div className="border border-zinc-800 bg-zinc-900/40 backdrop-blur-sm p-4 sm:p-6 rounded-lg hover:border-[var(--color-accent)]/50 transition-all duration-300">
             <p className="text-[var(--color-accent)] text-xs sm:text-sm font-medium tracking-wider mb-3">
-              {/* {dateRange} */}
+              {dateRange}
             </p>
             <h3 className="text-white text-lg sm:text-xl font-bold uppercase mb-2 tracking-wide">
-              {/* {company} */}
+              {company}
             </h3>
             <p className="text-zinc-500 text-xs sm:text-sm uppercase tracking-wider mb-3">
               {role}
@@ -60,7 +60,7 @@ const ExperienceEntry = ({
               {tags.map((tag, idx) => (
                 <span
                   key={idx}
-                  className="px-2 sm:px-3 py-1 bg-zinc-900 border border-zinc-800 text-white text-[10px] sm:text-xs font-medium uppercase tracking-wider rounded"
+                  className="rounded-full border border-zinc-700 bg-zinc-900 px-2.5 py-1 text-[9px] font-medium uppercase tracking-[0.12em] text-zinc-300"
                 >
                   {tag}
                 </span>
@@ -82,23 +82,23 @@ const ExperienceEntry = ({
               transition={{ duration: 0.6 }}
             >
               <div className="border border-zinc-800 bg-zinc-900/40 backdrop-blur-sm p-8 rounded-lg hover:border-[var(--color-accent)]/50 transition-all duration-300">
-                <p className="text-[var(--color-accent)] text-sm font-medium tracking-wider mb-4">
+                <p className="text-[var(--color-accent)] text-xs font-medium tracking-wider mb-4">
                   {dateRange}
                 </p>
-                <h3 className="text-white text-2xl font-bold uppercase mb-2 tracking-wide">
+                <h3 className="text-white text-xl font-bold uppercase mb-2 tracking-wide">
                   {company}
                 </h3>
                 <p className="text-zinc-500 text-sm uppercase tracking-wider mb-4">
                   {role}
                 </p>
-                <p className="text-zinc-400 leading-relaxed mb-6">
+                <p className="text-zinc-400 leading-relaxed text-sm mb-6">
                   {description}
                 </p>
                 <div className="flex flex-wrap gap-3">
                   {tags.map((tag, idx) => (
                     <span
                       key={idx}
-                      className="px-3 py-1 bg-zinc-900 border border-zinc-800 text-white text-xs font-medium uppercase tracking-wider rounded"
+                      className="rounded-full border border-zinc-700 bg-zinc-900 px-2.5 py-1 text-[9px] font-medium uppercase tracking-[0.12em] text-zinc-300"
                     >
                       {tag}
                     </span>
@@ -131,23 +131,23 @@ const ExperienceEntry = ({
               transition={{ duration: 0.6 }}
             >
               <div className="border border-zinc-800 bg-zinc-900/40 backdrop-blur-sm p-8 rounded-lg hover:border-[var(--color-accent)]/50 transition-all duration-300">
-                <p className="text-[var(--color-accent)] text-sm font-medium tracking-wider mb-4">
+                <p className="text-[var(--color-accent)] text-xs font-medium tracking-wider mb-4">
                   {dateRange}
                 </p>
-                <h3 className="text-white text-2xl font-bold uppercase mb-2 tracking-wide">
+                <h3 className="text-white text-xl font-bold uppercase mb-2 tracking-wide">
                   {company}
                 </h3>
                 <p className="text-zinc-500 text-sm uppercase tracking-wider mb-4">
                   {role}
                 </p>
-                <p className="text-zinc-400 leading-relaxed mb-6">
+                <p className="text-zinc-400 leading-relaxed mb-6 text-sm">
                   {description}
                 </p>
                 <div className="flex flex-wrap gap-3">
                   {tags.map((tag, idx) => (
                     <span
                       key={idx}
-                      className="px-3 py-1 bg-zinc-900 border border-zinc-800 text-white text-xs font-medium uppercase tracking-wider rounded"
+                      className="rounded-full border border-zinc-700 bg-zinc-900 px-2.5 py-1 text-[9px] font-medium uppercase tracking-[0.12em] text-zinc-300"
                     >
                       {tag}
                     </span>
@@ -215,7 +215,7 @@ export default function ExperienceSection() {
             </span>
             <div className="w-6 sm:w-8 h-[1px] bg-[var(--color-accent)] opacity-50" />
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 px-4">
             Where I&apos;ve Worked
           </h2>
         </motion.div>

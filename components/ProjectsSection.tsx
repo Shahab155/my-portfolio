@@ -37,7 +37,7 @@ export default function ProjectsSection() {
             </span>
             <div className="w-8 h-[1px] bg-[var(--color-accent)] opacity-50"></div>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-center text-white mb-8">
+          <h2 className="text-3xl font-bold md:text-4xl text-center text-white mb-8">
             MY PROJECTS
           </h2>
         </motion.div>
@@ -80,7 +80,7 @@ export default function ProjectsSection() {
                   </div>
 
                   {/* Project Info */}
-                  <h3 className="text-xl font-bold text-white mb-3 tracking-wide">
+                  <h3 className="text-lg font-bold text-white mb-3 tracking-wide">
                     {project.title}
                   </h3>
                   <p className="text-sm font-light text-zinc-400 leading-relaxed tracking-wide mb-6 flex-grow line-clamp-4">
@@ -88,11 +88,11 @@ export default function ProjectsSection() {
                   </p>
 
                   {/* Tech Stack Badges */}
-                  <div className="flex flex-wrap gap-1.5 mb-8">
+                  <div className="flex flex-wrap gap-1.5 mb-5">
                     {project.tech?.map((item) => (
                       <span 
                         key={item} 
-                        className="text-[10px] px-2 py-1 rounded-md bg-zinc-800/50 text-zinc-400 border border-zinc-800 transition-colors hover:border-[var(--color-accent)]/50"
+                        className="rounded-full border border-zinc-700 bg-zinc-900 px-2.5 py-1 text-[9px] font-medium uppercase tracking-[0.12em] text-zinc-300"
                       >
                         {item}
                       </span>
@@ -115,7 +115,7 @@ export default function ProjectsSection() {
                           href={project.demoUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-full bg-[var(--color-accent)] hover:bg-cyan-400 text-black shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 transition-all duration-300 text-sm font-medium"
+                          className="flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-[var(--color-accent)] hover:bg-cyan-400 text-black shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 transition-all duration-300 text-sm font-medium"
                         >
                           Demo <FiPlay size={16} fill="currentColor" />
                         </Link>
@@ -125,7 +125,7 @@ export default function ProjectsSection() {
                         href={project.demoUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-full flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-[var(--color-accent)] hover:bg-cyan-400 text-black shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 transition-all duration-300 text-sm font-medium"
+                        className="w-full flex items-center justify-center gap-2 px-6 py-2 rounded-full bg-[var(--color-accent)] hover:bg-cyan-400 text-black shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 transition-all duration-300 text-sm font-medium"
                       >
                         Live Demo <FiPlay size={16} fill="currentColor" />
                       </Link>
@@ -148,7 +148,7 @@ export default function ProjectsSection() {
         >
           <Link
             href="/projects"
-            className="rounded-full border border-[var(--color-accent)] text-[var(--color-accent)] px-10 py-3.5 hover:bg-[var(--color-accent)] hover:text-black transition-all duration-300 font-medium text-lg tracking-wide hover:shadow-[0_0_20px_var(--color-accent)]"
+            className="rounded-full border border-[var(--color-accent)] text-[var(--color-accent)] px-8 py-3 hover:bg-[var(--color-accent)] hover:text-black transition-all duration-300 font-medium text-md tracking-wide hover:shadow-[0_0_20px_var(--color-accent)]"
           >
             Explore All Projects
           </Link>

@@ -126,7 +126,7 @@ export default function ContactSection() {
             <div className="w-8 h-px bg-cyan-500 opacity-50" />
           </div>
 
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <h2 className="text-3xl font-bold text-white md:text-4xl mb-4">
             Let&apos;s Work Together
           </h2>
           <p className="text-base font-light text-zinc-400 leading-relaxed tracking-wide text-center max-w-xl mx-auto">
@@ -155,19 +155,19 @@ export default function ContactSection() {
                 className="flex items-center gap-4 bg-zinc-900/50 border border-zinc-800/50 hover:border-cyan-500/50 rounded-2xl p-5 cursor-pointer transition-all duration-300 group backdrop-blur-sm"
               >
                 {/* Icon box */}
-                <div className="bg-cyan-500/10 text-cyan-500 p-3 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-cyan-500/20 transition-colors duration-300">
+                <div className="bg-cyan-500/10 text-cyan-500 p-2 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-cyan-500/20 transition-colors duration-300">
                   {card.icon}
                 </div>
 
                 {/* Text */}
                 <div className="min-w-0">
-                  <p className="text-sm text-zinc-400 mb-0.5">{card.title}</p>
-                  <p className="text-white font-semibold truncate">{card.subtitle}</p>
+                  <p className="text-xs text-zinc-400 mb-0.5">{card.title}</p>
+                  <p className="text-white text-sm font-semibold truncate">{card.subtitle}</p>
                 </div>
 
                 {/* Arrow */}
                 <motion.span
-                  className="ml-auto text-zinc-600 group-hover:text-cyan-500 text-xl transition-colors duration-300 shrink-0"
+                  className="ml-auto text-zinc-600 group-hover:text-cyan-500 text-sm transition-colors duration-300 shrink-0"
                   initial={{ x: 0 }}
                   whileHover={{ x: 4 }}
                 >
@@ -203,7 +203,7 @@ export default function ContactSection() {
             >
               {/* Name */}
               <div>
-                <label htmlFor="contact-name" className="block text-sm text-zinc-400 mb-1">
+                <label htmlFor="contact-name" className="block text-xs text-zinc-400 mb-1">
                   Name
                 </label>
                 <input
@@ -220,7 +220,7 @@ export default function ContactSection() {
 
               {/* Email */}
               <div>
-                <label htmlFor="contact-email" className="block text-sm text-zinc-400 mb-1">
+                <label htmlFor="contact-email" className="block text-xs text-zinc-400 mb-1">
                   Email
                 </label>
                 <input
@@ -237,7 +237,7 @@ export default function ContactSection() {
 
               {/* Message */}
               <div>
-                <label htmlFor="contact-message" className="block text-sm text-zinc-400 mb-1">
+                <label htmlFor="contact-message" className="block text-xs text-zinc-400 mb-1">
                   Message
                 </label>
                 <textarea
@@ -260,7 +260,7 @@ export default function ContactSection() {
                 disabled={isLoading || isSuccess}
                 whileHover={{ scale: isLoading || isSuccess ? 1 : 1.02 }}
                 whileTap={{ scale: isLoading || isSuccess ? 1 : 0.98 }}
-                className={`w-full flex items-center justify-center gap-2 rounded-xl px-6 py-3.5 font-semibold text-base transition-all duration-300
+                className={`w-full flex items-center justify-center gap-2 rounded-xl px-6 py-2 font-semibold text-base transition-all duration-300
                   ${isSuccess
                     ? 'bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 cursor-default'
                     : 'bg-cyan-500 hover:bg-cyan-400 text-black cursor-pointer'
