@@ -19,7 +19,7 @@ export default function ProjectsSection() {
       {/* Subtle dot grid background */}
       <div className="absolute inset-0 bg-[radial-gradient(#475569_0.8px,transparent_1px)] bg-[length:20px_20px] opacity-40 pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12  relative z-10">
 
         {/* Section Heading */}
         <motion.div

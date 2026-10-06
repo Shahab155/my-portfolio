@@ -1,6 +1,3 @@
-'use client';
-
-import { useEffect } from 'react';
 import Navbar from './Navbar';
 import FloatingActions from './FloatingActions';
 

@@ -27,7 +27,7 @@ const [isVisible, setIsVisible] = useState(false);
         {/* Subtle dot grid background */}
         <div className="absolute inset-0 bg-[radial-gradient(#475569_0.8px,transparent_1px)] bg-[length:20px_20px] opacity-40" />
 
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-32 md:pt-20 pb-16 lg:pb-0 relative z-10">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-32 sm:pt-12 md:pt-14  lg:pb-0 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* LEFT COLUMN - Text Content */}
             <motion.div
@@ -121,9 +121,12 @@ const [isVisible, setIsVisible] = useState(false);
             >
               <Image
                 src="/hero.png"
-                // alt="Shahab Ud Din - Full Stack & AI Developer"
-                alt=""
-                fill
+                alt="Shahab Ud Din - Full Stack & AI Developer"
+                // fill
+                width={600}
+                height={600}
+                quality={100}
+
                 className="object-cover rounded-3xl shadow-2xl"
                 priority
               />
